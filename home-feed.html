@@ -14,13 +14,26 @@
 </head>
 <body>
     <header class="bg-primary p-3 mb-5 mx-auto border-radius-lg col-12 sticky-top">
-        <div class="navbar mx-auto border-radius-lg col-12 col-md-8 rounded-3">
-            <a href="home-feed.html">
-                <h1 class="text-white display-6">YELLO</h1>
-            </a>
-                <a href="profile.html">
-                    <img class="rounded-circle" width="60px" src="/images/jake-square.jpg" alt="Jakes profile picture">
-                </a>
+        <div class="navbar p-3 d-flex mx-auto border-radius-lg col-12 col-md-8 rounded-3 navbar-expand-lg">
+            <div class="d-flex justify-content-between">
+                <a class="navbar-brand" href="./home-feed.html"><h1 class="text-white display-6">YELLO</h1></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a href="./home-feed.html" class="text-secondary nav-link">HJEM</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a href="./profile.html" class="text-secondary nav-link">PROFIL</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a href="./index.html" class="text-secondary nav-link">LOGG UT</a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </header>
     <main class="p-3 row col-12 col-md-8 mx-auto">
