@@ -3,6 +3,7 @@ const usernameInput = document.getElementById("reg-username");
 const emailInput = document.getElementById("reg-email");
 const passwordInput = document.getElementById("reg-password");
 const registerBtn = document.getElementById("reg-submit");
+const errorMsg = document.getElementById("error-msg");
 
 
 const usernameMsg = document.getElementById("reg-username-msg");
@@ -15,8 +16,11 @@ const API_BASE_URL = "https://nf-api.onrender.com";
 
 //Register end point: /api/v1/social/auth/register
 
-// ------------- Formvalidering
 
+
+
+
+// ------------- Formvalidering
 
 registerBtn.addEventListener("click", validateForm);
 
@@ -31,10 +35,9 @@ function validateForm(e) {
         usernameMsg.innerHTML = "Username must be at least 5 characters long.";
     }
     if (/\d/.test(submittedUsername)) {
-        nameMsg.innerHTML = "Usernameame cannot contain any digits.";
+        nameMsg.innerHTML = "Username cannot contain any digits.";
     }
     
-
     let submittedEmail = emailInput.value.trim();
     console.log(`Email: ${submittedEmail}`);
 
@@ -45,7 +48,6 @@ function validateForm(e) {
         emailMsg.innerHTML = "Please enter a valid email!";
     }
 
-
     let submittedPassword = passwordInput.value.trim();
     console.log(`Message: ${submittedPassword}`)
 
@@ -53,10 +55,34 @@ function validateForm(e) {
     if (submittedPassword.length < 8) {
         passwordMsg.innerHTML = "Password must be at least 8 characters long.";
     }
+    
+};
 
-}
+
 
 // ------------- Registers user
+
+registerBtn.addEventListener("click", validateAndProcess);
+function validateAndProcess(event) {
+    //event.preventDefault();
+    console.log("du har trykket");
+
+
+    const username = usernameInput.value.trim();
+    const email = emailInput.value.trim();
+    const password = passwordInput.value.trim();
+
+    const userToRegister = {
+  name: username,
+  email: email,
+  password: password,
+};
+
+const registerUrl = `${API_BASE_URL}/api/v1/social/auth/register`;
+
+registerUSer(registerUrl, userToRegister);
+
+}
 
 async function registerUSer(url, userData) {
   console.log(url, userData);
@@ -72,18 +98,11 @@ async function registerUSer(url, userData) {
     const response = await fetch(url, postData);
     console.log(response);
     const json = await response.json();
+    errorMsg.innerHTML = json.message;
     console.log(json);
   } catch (error) {
     console.log(error);
   }
-}
+} 
 
-const userToRegister = {
-  name: "marthebull",
-  email: "marpet63722@stud.noroff.no",
-  password: "Noroff2022",
-};
 
-const registerUrl = `${API_BASE_URL}/api/v1/social/auth/register`;
-
-//registerUSer(registerUrl, userToRegister);
