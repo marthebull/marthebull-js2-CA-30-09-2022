@@ -21,13 +21,13 @@
     </header>
     <main class="container col-8 col-md-6 col-lg-4 mx-auto">
         <div>
-            <form action="./index.html" class="text-center">
+            <form id="reg-form" action="./index.html" class="text-center">
+                <p class="text-warning justify-content-start" id="reg-username-msg"></p>
                 <input type="text" id="reg-username" class="form-control mb-4 rounded-pill p-2 ps-4" placeholder="Username" required>
-                <p id="reg-username-msg"></p>
+                <p class="text-warning justify-content-start" id="reg-email-msg"></p>
                 <input type="email" id="reg-email" class="form-control mb-4 rounded-pill p-2 ps-4" placeholder="Email address" required>
-                <p id="reg-email-msg"></p>
+                <p class="text-warning justify-content-start" id="reg-password-msg"></p>
                 <input type="password" id="reg-password" class="form-control mb-4 rounded-pill p-2 ps-4" placeholder="Password" required>
-                <p id="reg-password-msg"></p>
                 <button type="submit" id="reg-submit" class="btn btn-primary col-6 mb-4 text-secondary rounded-pill nowrap">Create account</button>
             </form>
             <p class="text-center text-primary mt-5">or <a href="./index.html" class="link-primary">log in.</a></p>
