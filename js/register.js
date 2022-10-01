@@ -1,87 +1,75 @@
-const form = document.getElementById("reg-form"); 
+const form = document.getElementById("reg-form");
 const usernameInput = document.getElementById("reg-username");
 const emailInput = document.getElementById("reg-email");
 const passwordInput = document.getElementById("reg-password");
 const registerBtn = document.getElementById("reg-submit");
 const errorMsg = document.getElementById("error-msg");
 
-
 const usernameMsg = document.getElementById("reg-username-msg");
 const emailMsg = document.getElementById("reg-email-msg");
 const passwordMsg = document.getElementById("reg-password-msg");
 
-
 const API_BASE_URL = "https://nf-api.onrender.com";
 
-
 //Register end point: /api/v1/social/auth/register
-
-
-
-
 
 // ------------- Formvalidering
 
 registerBtn.addEventListener("click", validateForm);
 
 function validateForm(e) {
-    e.preventDefault(); 
+  e.preventDefault();
 
-    let submittedUsername = usernameInput.value.trim();
-    console.log(`Username: ${submittedUsername}`)
+  let submittedUsername = usernameInput.value.trim();
+  console.log(`Username: ${submittedUsername}`);
 
-    usernameMsg.innerHTML = "";
-    if (submittedUsername.length < 5) {
-        usernameMsg.innerHTML = "Username must be at least 5 characters long.";
-    }
-    if (/\d/.test(submittedUsername)) {
-        nameMsg.innerHTML = "Username cannot contain any digits.";
-    }
-    
-    let submittedEmail = emailInput.value.trim();
-    console.log(`Email: ${submittedEmail}`);
+  usernameMsg.innerHTML = "";
+  if (submittedUsername.length < 5) {
+    usernameMsg.innerHTML = "Username must be at least 5 characters long.";
+  }
+  if (/\d/.test(submittedUsername)) {
+    nameMsg.innerHTML = "Username cannot contain any digits.";
+  }
 
-    emailMsg.innerHTML = "";
+  let submittedEmail = emailInput.value.trim();
+  console.log(`Email: ${submittedEmail}`);
 
-    let emailPattern = /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/;
-    if (!emailPattern.test(submittedEmail)) {
-        emailMsg.innerHTML = "Please enter a valid email!";
-    }
+  emailMsg.innerHTML = "";
 
-    let submittedPassword = passwordInput.value.trim();
-    console.log(`Message: ${submittedPassword}`)
+  let emailPattern = /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/;
+  if (!emailPattern.test(submittedEmail)) {
+    emailMsg.innerHTML = "Please enter a valid email!";
+  }
 
-    passwordMsg.innerHTML = "";
-    if (submittedPassword.length < 8) {
-        passwordMsg.innerHTML = "Password must be at least 8 characters long.";
-    }
-    
-};
+  let submittedPassword = passwordInput.value.trim();
+  console.log(`Message: ${submittedPassword}`);
 
-
+  passwordMsg.innerHTML = "";
+  if (submittedPassword.length < 8) {
+    passwordMsg.innerHTML = "Password must be at least 8 characters long.";
+  }
+}
 
 // ------------- Registers user
 
 registerBtn.addEventListener("click", validateAndProcess);
 function validateAndProcess(event) {
-    //event.preventDefault();
-    console.log("du har trykket");
+  //event.preventDefault();
+  console.log("du har trykket");
 
+  const username = usernameInput.value.trim();
+  const email = emailInput.value.trim();
+  const password = passwordInput.value.trim();
 
-    const username = usernameInput.value.trim();
-    const email = emailInput.value.trim();
-    const password = passwordInput.value.trim();
-
-    const userToRegister = {
+  const userToRegister = {
     name: username,
     email: email,
     password: password,
-};
+  };
 
-const registerUrl = `${API_BASE_URL}/api/v1/social/auth/register`;
+  const registerUrl = `${API_BASE_URL}/api/v1/social/auth/register`;
 
-registerUSer(registerUrl, userToRegister);
-
+  registerUSer(registerUrl, userToRegister);
 }
 
 async function registerUSer(url, userData) {
@@ -103,6 +91,4 @@ async function registerUSer(url, userData) {
   } catch (error) {
     console.log(error);
   }
-};
-
-
+}
