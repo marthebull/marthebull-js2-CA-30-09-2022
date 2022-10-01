@@ -73,9 +73,9 @@ function validateAndProcess(event) {
     const password = passwordInput.value.trim();
 
     const userToRegister = {
-  name: username,
-  email: email,
-  password: password,
+    name: username,
+    email: email,
+    password: password,
 };
 
 const registerUrl = `${API_BASE_URL}/api/v1/social/auth/register`;
@@ -103,6 +103,6 @@ async function registerUSer(url, userData) {
   } catch (error) {
     console.log(error);
   }
-} 
+};
 
 
