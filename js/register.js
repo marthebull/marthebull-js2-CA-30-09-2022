@@ -92,3 +92,7 @@ async function registerUSer(url, userData) {
     console.log(error);
   }
 }
+
+//Vil lage dette inni fetchen:
+// if response.status er lik 200 > bli sendt til log in siden, (redeirect med window.location.href??)
+// else if response.status er lik 400 eller annet, skriv ut feilmelding i errorMsg.innerHTML

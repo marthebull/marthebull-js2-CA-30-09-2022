@@ -1,4 +1,4 @@
-const form = document.getElementById("login-form"); 
+const form = document.getElementById("login-form");
 const usernameInput = document.getElementById("login-username");
 const passwordInput = document.getElementById("login-password");
 const loginBtn = document.getElementById("login-submit");
@@ -9,35 +9,35 @@ const passwordMsg = document.getElementById("login-password-msg");
 
 const API_BASE_URL = "https://nf-api.onrender.com";
 
-
-
 // ------------- Formvalidering
 loginBtn.addEventListener("click", validateForm);
 
 function validateForm(e) {
-    e.preventDefault(); 
+  e.preventDefault();
 
-    let submittedUsername = usernameInput.value.trim();
-    console.log(`Username: ${submittedUsername}`)
+  let submittedUsername = usernameInput.value.trim();
+  console.log(`Username: ${submittedUsername}`);
 
-    usernameMsg.innerHTML = "";
-    if (submittedUsername.length < 5) {
-        usernameMsg.innerHTML = "Username must be at least 5 characters long.";
-    }
-    if (/\d/.test(submittedUsername)) {
-        nameMsg.innerHTML = "Username cannot contain any digits.";
-    }
+  usernameMsg.innerHTML = "";
+  if (submittedUsername.length < 5) {
+    usernameMsg.innerHTML = "Username must be at least 5 characters long.";
+  }
+  if (/\d/.test(submittedUsername)) {
+    nameMsg.innerHTML = "Username cannot contain any digits.";
+  }
 
+  let submittedPassword = passwordInput.value.trim();
+  console.log(`Message: ${submittedPassword}`);
 
-    let submittedPassword = passwordInput.value.trim();
-    console.log(`Message: ${submittedPassword}`)
-
-    passwordMsg.innerHTML = "";
-    if (submittedPassword.length < 8) {
-        passwordMsg.innerHTML = "Password must be at least 8 characters long.";
-    }
+  passwordMsg.innerHTML = "";
+  if (submittedPassword.length < 8) {
+    passwordMsg.innerHTML = "Password must be at least 8 characters long.";
+  }
 }
 
+// ------------ Login user
 
-// ------------ Login user 
-
+//Her vil jeg:
+// Sjekke om brukernavn og passord finnes i database
+// Hvis response.status er lik 200 > send til homefeed.html (redeirect med window.location.href??)
+// Hvis annen status kode > skriv ut feilmelding i errorMsg
