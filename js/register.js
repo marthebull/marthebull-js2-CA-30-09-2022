@@ -88,11 +88,18 @@ async function registerUSer(url, userData) {
     const json = await response.json();
     errorMsg.innerHTML = json.message;
     console.log(json);
+    if (response.status === 201) {
+      window.location = "../index.html";
+    } else if (response.status === 400) {
+      errorMsg.innerHTML = `${json.message}`;
+    }
   } catch (error) {
     console.log(error);
   }
 }
 
 //Vil lage dette inni fetchen:
-// if response.status er lik 200 > bli sendt til log in siden, (redeirect med window.location.href??)
-// else if response.status er lik 400 eller annet, skriv ut feilmelding i errorMsg.innerHTML
+// if response.status er lik 201 > bli sendt til log in siden, (redeirect med window.location.href??)
+// else if response.status er lik 400 eller annet, skriv ut feilmelding i errorMsg.innerHTML FIKK DETTE TIL!
+
+// Nytt probelm, valideringen funker ikke
