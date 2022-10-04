@@ -38,7 +38,8 @@ function validateForm(e) {
 
   let emailPattern = /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/;
   if (!emailPattern.test(submittedEmail)) {
-    emailMsg.innerHTML = "Please enter a valid email!";
+    emailMsg.innerHTML =
+      "Please enter a valid email. Email must contain @stud.noroff.no or @noroff.no";
   }
 
   let submittedPassword = passwordInput.value.trim();
@@ -54,7 +55,7 @@ function validateForm(e) {
 
 registerBtn.addEventListener("click", validateAndProcess);
 function validateAndProcess(event) {
-  //event.preventDefault();
+  event.preventDefault();
   console.log("du har trykket");
 
   const username = usernameInput.value.trim();
@@ -86,12 +87,9 @@ async function registerUSer(url, userData) {
     const response = await fetch(url, postData);
     console.log(response);
     const json = await response.json();
-    errorMsg.innerHTML = json.message;
     console.log(json);
     if (response.status === 201) {
       window.location = "../index.html";
-    } else if (response.status === 400) {
-      errorMsg.innerHTML = `${json.message}`;
     }
   } catch (error) {
     console.log(error);
@@ -102,4 +100,4 @@ async function registerUSer(url, userData) {
 // if response.status er lik 201 > bli sendt til log in siden, (redeirect med window.location.href??)
 // else if response.status er lik 400 eller annet, skriv ut feilmelding i errorMsg.innerHTML FIKK DETTE TIL!
 
-// Nytt probelm, valideringen funker ikke
+// Nytt probelm, valideringen funker ikke NÅ FUNKER VALIDERING OG REGISTRERING
