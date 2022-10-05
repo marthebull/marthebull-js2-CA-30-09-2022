@@ -27,8 +27,10 @@ function validateForm(e) {
   if (submittedUsername.length < 5) {
     usernameMsg.innerHTML = "Username must be at least 5 characters long.";
   }
-  if (/\d/.test(submittedUsername)) {
-    nameMsg.innerHTML = "Username cannot contain any digits.";
+  let usernamePattern = /^[A-Za-z0-9_]+$/;
+  if (!usernamePattern.test(submittedUsername)) {
+    usernameMsg.innerHTML =
+      "Username can only contain characters, digits and underscore.";
   }
 
   let submittedEmail = emailInput.value.trim();
