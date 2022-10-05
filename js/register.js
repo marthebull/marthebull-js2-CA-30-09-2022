@@ -90,6 +90,8 @@ async function registerUSer(url, userData) {
     console.log(json);
     if (response.status === 201) {
       window.location = "../index.html";
+    } else if (json.message === "Profile already exists") {
+      errorMsg.innerHTML = `Profile already exists. Try to <a href="../index.html">log in</a> instead.`;
     }
   } catch (error) {
     console.log(error);
