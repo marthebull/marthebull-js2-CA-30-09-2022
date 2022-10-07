@@ -56,6 +56,7 @@ function validateForm(e) {
 // ------------- Registers user
 
 registerBtn.addEventListener("click", validateAndProcess);
+
 function validateAndProcess(event) {
   event.preventDefault();
   console.log("du har trykket");

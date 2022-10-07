@@ -1,44 +1,72 @@
+// ------------------ Deklarerer variabler
+
 const posts = document.getElementById("posts");
 const postContent = document.getElementById("post-content");
 const postTitle = document.getElementById("post-title");
+const postMedia = document.getElementById("post-media");
 const submitPost = document.getElementById("submit-post");
 const yourUsername = document.getElementById("your-username");
+const editBtn = document.getElementById("edit-button");
+const viewBtn = document.getElementById("view-button");
 
 const API_BASE_URL = "https://nf-api.onrender.com";
 
 const getAllPostsURL = `${API_BASE_URL}/api/v1/social/posts?_author=true&_comments=true&_reactions=true`;
-const postPostURL = `${API_BASE_URL}/api/v1/social/posts`;
+const postPostURL = `${API_BASE_URL}/api/v1/social/posts/`;
 
 const allPosts = [];
 
+// Brukernavn på new post form
 yourUsername.innerHTML = localStorage.getItem("username");
+
+// -------------- Oppsett av enkelt post
 
 const writePosts = () => {
   posts.innerHTML = "";
   for (let content of allPosts) {
+    const deleteBtn = `<button class="btnDelete btn btn-primary ms-3 text-secondary rounded-pill" data-delete="${content.id}">DELETE</button>`;
+    const updateBtn = `<button class="btnUpdate btn border-primary ms-3 text-primary  rounded-pill" data-update="${content.id}" type="button" data-bs-toggle="modal" data-bs-target="#editModal">EDIT</button>`;
     posts.innerHTML += `
-            <div class="bg-white rounded-3 p-3 mb-3">
+            <div class="bg-white rounded-3 p-5 mb-3">
                 <div>
                     <a class="d-flex align-items-center mb-4 text-decoration-none" href="profile.html">
-                        <p class="font-weight-bold ps-3 mb-0 text-black">${
-                          content.author.name
-                        }</p>
+                        <p class=" mb-0 text-black">@ ${content.author.name}</p>
                     </a>
                 </div>
                 <h3>${content.title}</h3>
-                <p>${content.updated}</p>
-                <p>${content.body}</p>
-                ${
-                  content.author === yourUsername
-                    ? "<button>delete</button>"
-                    : ""
-                }
-            </div>`;
+                <p class="col-10">${content.body}</p>
+                <img class="rounded-3 mb-3" width="100%" src="${
+                  content.media
+                }" alt="">
+                <div class="d-flex justify-content-end">
+                    <button class="btnUpdate btn border-primary ms-3 text-primary rounded-pill">SEE MORE</button>
+                    ${
+                      localStorage.getItem("username") === content.author.name
+                        ? updateBtn
+                        : ""
+                    }
+                    ${
+                      localStorage.getItem("username") === content.author.name
+                        ? deleteBtn
+                        : ""
+                    }
+                </div>
+            </div>
+            `;
+  }
+  const deleteBtns = document.querySelectorAll("button.btnDelete");
+  console.log(deleteBtns);
+  for (let btnDelete of deleteBtns) {
+    btnDelete.addEventListener("click", () => {
+      console.log(btnDelete.getAttribute("data-delete"));
+      if (confirm("Are you sure you want to delete this post?")) {
+        deletePost(btnDelete.getAttribute("data-delete"));
+      }
+    });
   }
 };
 
-// sette inn deletknapp som dukker opp på posten IF author er marthebull
-// så posts.innerHTML += <button id=${content.id}></button>
+// ----------------- Henter alle poster
 
 async function getAllPosts(url) {
   try {
@@ -50,12 +78,9 @@ async function getAllPosts(url) {
       },
     };
     console.log(url, options);
-
     const response = await fetch(url, options);
-
     const posts = await response.json();
     console.log(posts);
-
     for (let post of posts) {
       allPosts.push(post);
     }
@@ -65,9 +90,10 @@ async function getAllPosts(url) {
   }
 }
 
+// Henter alle poster
 getAllPosts(getAllPostsURL);
 
-// new post
+// ----------------------- Poster ny post
 
 async function postPost(url, data) {
   console.log("funger pls");
@@ -90,10 +116,8 @@ async function postPost(url, data) {
     const answer = await response.json();
     if (response.status === 200) {
       console.log("bra");
+      window.location = "../home-feed.html";
       getAllPosts(getAllPostsURL);
-      setTimeout(() => {
-        window.location.reload();
-      }, 100);
     }
     console.log(answer);
   } catch (error) {
@@ -101,18 +125,39 @@ async function postPost(url, data) {
   }
 }
 
+// Poster posten når man klikker på knappen
 submitPost.addEventListener("click", () => {
   const postData = {
-    title: postTitle.value.trim(), // Required
-    body: postContent.value.trim(), // Required
+    title: postTitle.value,
+    body: postContent.value,
+    media: postMedia.value, // <-------- Her vil lage en if image sett det inn, ellers la vær.
   };
   postPost(postPostURL, postData);
-
-  setTimeout(() => {
-    getAllPosts(getAllPostsURL);
-  }, 5000);
 });
 
-submitPost.addEventListener("click", () => {
-  console.log("Så smart marthe");
-});
+// ---------------- Sletter posten
+
+const deleteBtn = document.getElementById("delete-button");
+
+async function deletePost(id) {
+  console.log(id);
+  const url = `${postPostURL}${id}`;
+  try {
+    const accessToken = localStorage.getItem("accessToken");
+    const options = {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${accessToken}`,
+      },
+    };
+    console.log(url, options);
+    const response = await fetch(url, options);
+    console.log(response);
+    const answer = await response.json();
+    console.log(answer);
+    if (response.status === 200) window.location = "../home-feed.html";
+  } catch (error) {
+    console.log(error);
+  }
+}
