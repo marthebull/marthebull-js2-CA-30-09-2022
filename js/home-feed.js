@@ -56,7 +56,7 @@ const writePosts = () => {
     //console.log(viewBtns);
     for (let btnView of viewBtns) {
       btnView.addEventListener("click", () => {
-        window.location.href = `${API_BASE_URL}/api/v1/social/posts/${content.id}`;
+        window.location = `../view-post.html?id=${content.id}`;
       });
     }
   }
