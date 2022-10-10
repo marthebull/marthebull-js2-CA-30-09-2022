@@ -39,7 +39,7 @@ const writePosts = () => {
                   content.media
                 }" alt="">
                 <div class="d-flex justify-content-end">
-                    <button class="btnView btn border-primary ms-3 text-primary rounded-pill">SEE MORE</button>
+                    ${viewBtn}
                     ${
                       localStorage.getItem("username") === content.author.name
                         ? updateBtn
@@ -58,7 +58,8 @@ const writePosts = () => {
   //console.log(viewBtns);
   for (let btnView of viewBtns) {
     btnView.addEventListener("click", () => {
-      window.location = `../view-post.html?id=${content.id}`;
+      const viewId = viewBtn.getAttribute("data-view");
+      window.location = `../view-post.html?id=${viewId}`;
     });
   }
   const deleteBtns = document.querySelectorAll("button.btnDelete");
