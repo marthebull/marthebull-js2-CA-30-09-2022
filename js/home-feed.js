@@ -52,13 +52,13 @@ const writePosts = () => {
                 </div>
             </div>
             `;
-    const viewBtns = document.querySelectorAll("button.btnView");
-    //console.log(viewBtns);
-    for (let btnView of viewBtns) {
-      btnView.addEventListener("click", () => {
-        window.location = `../view-post.html?id=${content.id}`;
-      });
-    }
+  }
+  const viewBtns = document.querySelectorAll("button.btnView");
+  //console.log(viewBtns);
+  for (let btnView of viewBtns) {
+    btnView.addEventListener("click", () => {
+      window.location = `../view-post.html?id=${content.id}`;
+    });
   }
   const deleteBtns = document.querySelectorAll("button.btnDelete");
   //console.log(deleteBtns);
