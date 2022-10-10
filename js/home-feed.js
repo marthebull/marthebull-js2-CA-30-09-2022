@@ -80,6 +80,7 @@ async function getAllPosts(url) {
     const options = {
       method: "GET",
       headers: {
+        "Content-Type": "application/json",
         Authorization: `Bearer ${accessToken}`,
       },
     };
