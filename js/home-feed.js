@@ -172,15 +172,8 @@ async function deletePost(id) {
 
 // --------------- Edit post
 
-const editTitle = document.getElementById("edit-title");
-const editContent = document.getElementById("edit-content");
-const editMedia = document.getElementById("edit-media");
-const publishChanges = document.getElementById("publish-changes");
-
 // GET aktuell post, sette verdiene fra disse inn i innerHTML på inputfelt
 // gjøre endringer, PUT tilbake i API når du klikker på publish
-
-// --------------- view single post
 
 // -------------- filtrer poster
 
