@@ -81,6 +81,7 @@ function listData(post) {
   }
 }
 
+// Funksjon som sletter posten, blir klat leneger oppe
 async function deletePost(id) {
   console.log(id);
   const url = `${postUrl}${id}`;
@@ -103,30 +104,3 @@ async function deletePost(id) {
     console.log(error);
   }
 }
-
-/*
-
-fetch(url)
-  .then((response) => response.json())
-  .then((data) => {
-    console.log(data);
-    //listData(data.amiibo);
-  })
-  .catch((error) => (status.innerHTML = "Something's wrong!"));
-
-function listData(amiibo) {
-  console.log(amiibo);
-  document.title = amiibo.character;
-  let newDiv = `
-        <h1>${amiibo.character}</h1>
-        <img src="${amiibo.image}" alt="${amiibo.character}">
-        <p>Name: <strong>${amiibo.name}</strong></p>
-        <p>Amiibo Series: ${amiibo.amiiboSeries}</p>
-        <p>Game Series: ${amiibo.gameSeries}</p>
-        <p>Released (in Japan): ${amiibo.release.jp}
-        <p>Type: ${amiibo.type}</p>
-        <p><a href="amiibo.html">Back</a></p>
-    `;
-  out.innerHTML = newDiv;
-  status.innerHTML = "";
-}*/

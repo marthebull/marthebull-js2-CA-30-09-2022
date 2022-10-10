@@ -139,6 +139,7 @@ submitPost.addEventListener("click", () => {
   const postData = {
     title: postTitle.value.trim(),
     body: postContent.value.trim(),
+    //media: postMedia.value.trim(),
   };
   postPost(postPostURL, postData);
 });
