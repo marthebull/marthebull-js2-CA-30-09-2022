@@ -58,7 +58,7 @@ const writePosts = () => {
   //console.log(viewBtns);
   for (let btnView of viewBtns) {
     btnView.addEventListener("click", () => {
-      const viewId = viewBtn.getAttribute("data-view");
+      const viewId = btnView.getAttribute("data-view");
       window.location = `../view-post.html?id=${viewId}`;
     });
   }
