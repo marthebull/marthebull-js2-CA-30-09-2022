@@ -7,7 +7,6 @@ const postMedia = document.getElementById("post-media");
 const submitPost = document.getElementById("submit-post");
 const yourUsername = document.getElementById("your-username");
 const editBtn = document.getElementById("edit-button");
-const viewBtn = document.getElementById("view-button");
 
 const API_BASE_URL = "https://nf-api.onrender.com";
 
@@ -39,7 +38,7 @@ const writePosts = () => {
                   content.media
                 }" alt="">
                 <div class="d-flex justify-content-end">
-                    <button class="btnUpdate btn border-primary ms-3 text-primary rounded-pill">SEE MORE</button>
+                    <button class="btnView btn border-primary ms-3 text-primary rounded-pill">SEE MORE</button>
                     ${
                       localStorage.getItem("username") === content.author.name
                         ? updateBtn
@@ -53,9 +52,16 @@ const writePosts = () => {
                 </div>
             </div>
             `;
+    const viewBtns = document.querySelectorAll("button.btnView");
+    //console.log(viewBtns);
+    for (let btnView of viewBtns) {
+      btnView.addEventListener("click", () => {
+        window.location.href = `${API_BASE_URL}/api/v1/social/posts/${content.id}`;
+      });
+    }
   }
   const deleteBtns = document.querySelectorAll("button.btnDelete");
-  console.log(deleteBtns);
+  //console.log(deleteBtns);
   for (let btnDelete of deleteBtns) {
     btnDelete.addEventListener("click", () => {
       console.log(btnDelete.getAttribute("data-delete"));
