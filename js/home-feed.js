@@ -24,6 +24,7 @@ const writePosts = () => {
   posts.innerHTML = "";
   for (let content of allPosts) {
     const deleteBtn = `<button class="btnDelete btn btn-primary ms-3 text-secondary rounded-pill" data-delete="${content.id}">DELETE</button>`;
+    const viewBtn = `<button class="btnView btn border-primary ms-3 text-primary rounded-pill" data-view="${content.id}">SEE MORE</button>`;
     const updateBtn = `<button class="btnUpdate btn border-primary ms-3 text-primary  rounded-pill" data-update="${content.id}" type="button" data-bs-toggle="modal" data-bs-target="#editModal">EDIT</button>`;
     posts.innerHTML += `
             <div class="bg-white rounded-3 p-5 mb-3">
@@ -137,7 +138,6 @@ submitPost.addEventListener("click", () => {
   const postData = {
     title: postTitle.value.trim(),
     body: postContent.value.trim(),
-    media: postMedia.value.trim(), // <-------- Her vil lage en if image sett det inn, ellers la vær.
   };
   postPost(postPostURL, postData);
 });
