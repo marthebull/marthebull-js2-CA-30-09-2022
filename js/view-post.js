@@ -41,12 +41,12 @@ getThisPost(postUrl);
 function listData(post) {
   out.innerHTML = "";
   const deleteBtn = `<button class="btnDelete btn btn-primary ms-3 text-secondary rounded-pill" data-delete="${post.id}">DELETE</button>`;
-  const viewBtn = `<button class="btnView btn border-primary ms-3 text-primary rounded-pill" data-view="${post.id}">SEE MORE</button>`;
+  const feedBtn = `<a class="btnView btn border-primary ms-3 text-primary rounded-pill href="../home-feed.html">BACK TO FEED</a>`;
   const updateBtn = `<button class="btnUpdate btn border-primary ms-3 text-primary  rounded-pill" data-update="${post.id}" type="button" data-bs-toggle="modal" data-bs-target="#editModal">EDIT</button>`;
   out.innerHTML += `
             <div class="bg-white rounded-3 p-5 mb-3">
                 <div>
-                    <a class="d-flex align-items-center mb-4 text-decoration-none" href="profile.html">
+                    <a class="d-flex align-items-center mb-4 text-decoration-none" href="../profile.html">
                         <p class=" mb-0 text-black">@ ${post.author.name}</p>
                     </a>
                 </div>
@@ -56,6 +56,7 @@ function listData(post) {
                   post.media
                 }" alt="">
                 <div class="d-flex justify-content-end">
+                    ${feedBtn}
                     ${
                       localStorage.getItem("username") === post.author.name
                         ? updateBtn
