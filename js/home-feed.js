@@ -128,9 +128,9 @@ async function postPost(url, data) {
 // Poster posten når man klikker på knappen
 submitPost.addEventListener("click", () => {
   const postData = {
-    title: postTitle.value,
-    body: postContent.value,
-    media: postMedia.value, // <-------- Her vil lage en if image sett det inn, ellers la vær.
+    title: postTitle.value.trim(),
+    body: postContent.value.trim(),
+    media: postMedia.value.trim(), // <-------- Her vil lage en if image sett det inn, ellers la vær.
   };
   postPost(postPostURL, postData);
 });
@@ -161,3 +161,21 @@ async function deletePost(id) {
     console.log(error);
   }
 }
+
+// --------------- Edit post
+
+const editTitle = document.getElementById("edit-title");
+const editContent = document.getElementById("edit-content");
+const editMedia = document.getElementById("edit-media");
+const publishChanges = document.getElementById("publish-changes");
+
+// GET aktuell post, sette verdiene fra disse inn i innerHTML på inputfelt
+// gjøre endringer, PUT tilbake i API når du klikker på publish
+
+// --------------- view single post
+
+// -------------- filtrer poster
+
+// -------------- søk på poster, navn, innhold osv
+
+// --------------- Last egne poster på profil side + brukernavn
