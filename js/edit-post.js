@@ -38,34 +38,45 @@ async function getThisPost(url) {
     console.warn(error);
   }
 }
-
 // Kaller funksjonen som henter poost
 getThisPost(postUrl);
 
-function listData(post) {
-  const editUsername = document.getElementById("edit-username");
-  const feedBtn = `<a href="../home-feed.html" class="btnView btn border-primary ms-3 text-primary rounded-pill">BACK TO FEED</a>`;
-  const editTitle = document.getElementById("edit-title");
-  const editContent = document.getElementById("edit-content");
-  console.log(post);
+const editUsername = document.getElementById("edit-username");
+const createdDate = document.getElementById("created");
+const editTitle = document.getElementById("edit-title");
+const editContent = document.getElementById("edit-content");
+const submitChanges = document.getElementById("submit-edit");
 
+function listData(post) {
+  console.log(post);
   editUsername.innerHTML = `${post.author.name}`;
+  createdDate.innerHTML = `${post.created}`;
   editTitle.innerHTML = `${post.title}`;
   editContent.innerHTML = `${post.body}`;
 }
 
-// Funksjon som sletter posten, blir kalt leneger oppe
-async function deletePost(id) {
+const data = {
+  title: editTitle.value,
+  body: editContent.value,
+};
+
+console.log(data);
+
+// Funksjon som endrer posten, blir kalt leneger oppe
+
+const putUrl = `${postUrl}`;
+
+async function updatePost(url, data) {
   console.log(id);
-  const url = `${postUrl}${id}`;
   try {
     const accessToken = localStorage.getItem("accessToken");
     const options = {
-      method: "DELETE",
+      method: "PUT",
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${accessToken}`,
       },
+      body: JSON.stringify(data),
     };
     console.log(url, options);
     const response = await fetch(url, options);
@@ -77,3 +88,8 @@ async function deletePost(id) {
     console.log(error);
   }
 }
+
+submitChanges.addEventListener("click", () => {
+  console.log("heihei");
+  updatePost(putUrl, data);
+});
