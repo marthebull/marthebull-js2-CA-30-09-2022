@@ -220,8 +220,7 @@ async function deletePost(id) {
     console.log(response);
     const answer = await response.json();
     console.log(answer);
-    if (response.status === 200)
-      window.location = "../home-feed.html.hash#posts";
+    if (response.status === 200) window.location = "../home-feed.html";
   } catch (error) {
     console.log(error);
   }
