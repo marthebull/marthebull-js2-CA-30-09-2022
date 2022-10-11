@@ -30,7 +30,10 @@ const writePosts = (list, outElement) => {
             <div class="bg-white rounded-3 p-5 mb-3">
                 <div>
                     <a class="d-flex align-items-center mb-4 text-decoration-none" href="profile.html">
-                        <p class=" mb-0 text-black">@ ${content.author.name}</p>
+                    <div class="rounded-circle bg-primary p-4" alt="Jakes profile picture"></div>
+                        <p class="ps-3 mb-0 text-black">@ ${
+                          content.author.name
+                        }</p>
                     </a>
                 </div>
                 <h3>${content.title}</h3>
