@@ -12,7 +12,7 @@ const API_BASE_URL = "https://nf-api.onrender.com";
 const getPost = `${API_BASE_URL}/api/v1/social/posts/`;
 
 const postUrl = `${getPost}${id}?_author=true`;
-//console.log(postUrl);
+console.log(postUrl);
 
 async function getThisPost(url) {
   try {

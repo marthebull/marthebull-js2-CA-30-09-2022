@@ -34,7 +34,7 @@ const writePosts = () => {
                     </a>
                 </div>
                 <h3>${content.title}</h3>
-                <p class="col-10">${content.body}</p>
+                <p class="col-12 overflow-auto">${content.body}</p>
                 <img class="rounded-3 mb-3" width="100%" src="${
                   content.media
                 }" alt="">
@@ -62,6 +62,16 @@ const writePosts = () => {
       window.location = `../view-post.html?id=${viewId}`;
     });
   }
+
+  const editBtns = document.querySelectorAll("button.btnUpdate");
+  console.log(editBtns);
+  for (let btnEdit of editBtns) {
+    btnEdit.addEventListener("click", () => {
+      const editId = btnEdit.getAttribute("data-update");
+      window.location = `../edit-post.html?id=${editId}`;
+    });
+  }
+
   const deleteBtns = document.querySelectorAll("button.btnDelete");
   //console.log(deleteBtns);
   for (let btnDelete of deleteBtns) {
@@ -86,10 +96,10 @@ async function getAllPosts(url) {
         Authorization: `Bearer ${accessToken}`,
       },
     };
-    console.log(url, options);
+    //console.log(url, options);
     const response = await fetch(url, options);
     const posts = await response.json();
-    console.log(posts);
+    //console.log(posts);
     for (let post of posts) {
       allPosts.push(post);
     }
