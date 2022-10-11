@@ -40,9 +40,9 @@ getThisPost(postUrl);
 
 function listData(post) {
   out.innerHTML = "";
-  const deleteBtn = `<button class="btnDelete btn btn-primary ms-3 text-secondary rounded-pill" data-delete="${post.id}">DELETE</button>`;
-  const feedBtn = `<a href="../home-feed.html" class="btnView btn border-primary ms-3 text-primary rounded-pill">BACK TO FEED</a>`;
-  const updateBtn = `<button class="btnUpdate btn border-primary ms-3 text-primary  rounded-pill" data-update="${post.id}" type="button" data-bs-toggle="modal" data-bs-target="#editModal">EDIT</button>`;
+  const deleteBtn = `<button class="btnDelete btn btn-primary ms-3 text-secondary rounded-pill" data-delete="${post.id}">Delete</button>`;
+  const feedBtn = `<a href="../home-feed.html" class="btnView btn border-primary ms-3 text-primary rounded-pill">Back to feed</a>`;
+  const updateBtn = `<button class="btnUpdate btn border-primary ms-3 text-primary  rounded-pill" data-update="${post.id}" type="button" data-bs-toggle="modal" data-bs-target="#editModal">Edit</button>`;
   out.innerHTML += `
             <div class="bg-white rounded-3 p-5 mb-3">
                 <div>
@@ -93,7 +93,7 @@ function listData(post) {
 // Funksjon som sletter posten, blir klat leneger oppe
 async function deletePost(id) {
   console.log(id);
-  const url = `${postUrl}${id}`;
+  const url = `${postUrl}`;
   try {
     const accessToken = localStorage.getItem("accessToken");
     const options = {

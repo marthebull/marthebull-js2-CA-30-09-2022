@@ -45,7 +45,7 @@ async function postPost(url, data) {
   }
 }
 
-// Poster posten når man klikker på knappen
+// --------------- Poster posten når man klikker på knappen
 const submitPost = document.getElementById("submit-post-profile");
 const postTitle = document.getElementById("post-title-profile");
 const postMedia = document.getElementById("post-media-profile");
@@ -77,9 +77,7 @@ const writePosts = (list, postOutput) => {
                 <div>
                     <a class="d-flex align-items-center mb-4 text-decoration-none" href="profile.html">
                     <div class="rounded-circle bg-primary p-4 opacity-50" alt="Jakes profile picture"></div>
-                        <p class="ps-3 mb-0 text-black">@ ${
-                          content.author.name
-                        }</p>
+                        <p class="ps-3 mb-0 text-black">@ ${content.owner}</p>
                     </a>
                 </div>
                 <h3>${content.title}</h3>
@@ -93,12 +91,12 @@ const writePosts = (list, postOutput) => {
                 <div class="d-flex justify-content-end">
                     ${viewBtn}
                     ${
-                      localStorage.getItem("username") === content.author.name
+                      localStorage.getItem("username") === content.owner
                         ? updateBtn
                         : ""
                     }
                     ${
-                      localStorage.getItem("username") === content.author.name
+                      localStorage.getItem("username") === content.owner
                         ? deleteBtn
                         : ""
                     }
@@ -139,7 +137,9 @@ const writePosts = (list, postOutput) => {
   }
 };
 
-async function getAllPosts(url) {
+const myPostsURL = `${API_BASE_URL}/api/v1/social/profiles/${collectedUsername}?_posts=true`;
+
+async function getMyPosts(url) {
   try {
     const accessToken = localStorage.getItem("accessToken");
     const options = {
@@ -153,15 +153,90 @@ async function getAllPosts(url) {
 
     const response = await fetch(url, options);
     console.log(response);
-    const posts = await response.json();
-    console.log(posts);
-    postCollection = posts;
-    console.log("Colletion:", postCollection);
-    writePosts(posts, outElement);
+    const profile = await response.json();
+    console.log("Profil:", profile);
+    console.log("navn:", profile.name);
+    console.log("post:", profile.posts);
+
+    const myOwnPosts = profile.posts;
+
+    writePosts(myOwnPosts, postOutput);
   } catch (error) {
     console.warn(error);
   }
 }
 
 // Henter alle poster
-getAllPosts(getAllPostsURL);
+getMyPosts(myPostsURL);
+
+// ------------ Viser alle brukere på siden
+
+const profilesURL = `${API_BASE_URL}/api/v1/social/profiles/`;
+const profilesOutput = document.getElementById("profiles-output");
+
+async function getAllProfiles(url) {
+  try {
+    const accessToken = localStorage.getItem("accessToken");
+    const options = {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${accessToken}`,
+      },
+    };
+
+    const response = await fetch(url, options);
+    console.log(response);
+    const users = await response.json();
+    console.log(users);
+    writeProfiles(users, profilesOutput);
+  } catch (error) {
+    console.warn(error);
+  }
+}
+
+// Henter alle poster
+getAllProfiles(profilesURL);
+
+const writeProfiles = (list, outElement) => {
+  outElement.innerHTML = "";
+  let newDivs = "";
+
+  for (let user of list) {
+    newDivs += `
+                    <a class="d-flex align-items-center mb-4 text-decoration-none" href="profile.html">
+                        <div class="rounded-circle bg-primary p-4 opacity-50" alt=""></div>
+                        <p class="font-weight-bold ps-3 mb-0 text-black">${user.name}</p>
+                    </a>
+            `;
+  }
+
+  profilesOutput.innerHTML = newDivs;
+};
+
+// ---------------- Sletter posten
+
+const deleteBtn = document.getElementById("delete-button");
+
+async function deletePost(id) {
+  console.log(id);
+  const url = `${postPostURL}${id}`;
+  try {
+    const accessToken = localStorage.getItem("accessToken");
+    const options = {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${accessToken}`,
+      },
+    };
+    console.log(url, options);
+    const response = await fetch(url, options);
+    console.log(response);
+    const answer = await response.json();
+    console.log(answer);
+    if (response.status === 200) window.location = "../profile.html";
+  } catch (error) {
+    console.log(error);
+  }
+}
