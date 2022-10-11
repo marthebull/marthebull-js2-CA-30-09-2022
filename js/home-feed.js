@@ -170,7 +170,7 @@ function validateForm(e) {
 
   titleMsg.innerHTML = "";
   if (submittedTitle.length < 1) {
-    titleMsg.innerHTML = "Title must be at least 1 character long.";
+    titleMsg.innerHTML = "A title for your thoughts.";
   }
 
   let submittedContent = postContent.value.trim();
@@ -178,12 +178,12 @@ function validateForm(e) {
 
   contentMsg.innerHTML = "";
   if (submittedContent.length < 1) {
-    contentMsg.innerHTML = "Content must be at least 1 character long.";
+    contentMsg.innerHTML = "Hey, thoughts goes in here!";
   }
 
   imageUrlMsg.innerHTML = "";
   if (postMedia.value.trim() === "") {
-    imageUrlMsg.innerHTML = "Please enter a valid image URL.";
+    imageUrlMsg.innerHTML = "Show them with a valid image URL.";
   }
 }
 // --------------------------------------------------------------------------
