@@ -1,25 +1,68 @@
-// ------------------ Deklarerer variabler
-
-const outElement = document.getElementById("posts");
-const postContent = document.getElementById("post-content");
-const postTitle = document.getElementById("post-title");
-const postMedia = document.getElementById("post-media");
-const submitPost = document.getElementById("submit-post");
-const yourUsername = document.getElementById("your-username");
-const editBtn = document.getElementById("edit-button");
-
+// ------- urler
 const API_BASE_URL = "https://nf-api.onrender.com";
-
 const getAllPostsURL = `${API_BASE_URL}/api/v1/social/posts?_author=true&_comments=true&_reactions=true`;
 const postPostURL = `${API_BASE_URL}/api/v1/social/posts/`;
 
-// Brukernavn på new post form
-yourUsername.innerHTML = localStorage.getItem("username");
+// ----------- setter riktig brukernevn
+const currentUsername = document.getElementById("current-username");
+const currentUsernameCreate = document.getElementById(
+  "current-username-create"
+);
+const collectedUsername = localStorage.getItem("username");
+console.log(collectedUsername);
+currentUsername.innerHTML = `@ ${collectedUsername}`;
+currentUsernameCreate.innerHTML = `@ ${collectedUsername}`;
 
-// -------------- Oppsett av enkelt post
+// ----------------------- Poster ny post
 
-const writePosts = (list, outElement) => {
-  outElement.innerHTML = "";
+async function postPost(url, data) {
+  console.log("funger pls");
+
+  try {
+    const accessToken = localStorage.getItem("accessToken");
+    //console.log(accessToken);
+    const options = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${accessToken}`,
+      },
+      body: JSON.stringify(data),
+    };
+    console.log(url, data, options);
+    // opp i api
+    const response = await fetch(url, options);
+    console.log(response);
+    const answer = await response.json();
+    if (response.status === 200) {
+      console.log("bra");
+      window.location = "../home-feed.html";
+      getAllPosts(getAllPostsURL);
+    }
+    console.log(answer);
+  } catch (error) {
+    console.warn(error);
+  }
+}
+
+// Poster posten når man klikker på knappen
+const submitPost = document.getElementById("submit-post-profile");
+
+submitPost.addEventListener("click", () => {
+  const postData = {
+    title: postTitle.value.trim(),
+    body: postContent.value.trim(),
+    media: postMedia.value.trim(),
+  };
+  postPost(postPostURL, postData);
+});
+
+// ------- Hvor postene skal bli satt inn
+const postOutput = document.getElementById("profile-posts");
+// ------- Looper gjennom skriver ut poster
+
+const writePosts = (list, postOutput) => {
+  postOutput.innerHTML = "";
   let newDivs = "";
 
   for (let content of list) {
@@ -61,7 +104,7 @@ const writePosts = (list, outElement) => {
             `;
   }
 
-  outElement.innerHTML = newDivs;
+  postOutput.innerHTML = newDivs;
 
   const viewBtns = document.querySelectorAll("button.btnView");
   //console.log(viewBtns);
@@ -93,10 +136,6 @@ const writePosts = (list, outElement) => {
   }
 };
 
-// ----------------- Henter alle poster
-let postCollection = [];
-//console.log(postCollection);
-
 async function getAllPosts(url) {
   try {
     const accessToken = localStorage.getItem("accessToken");
@@ -123,101 +162,3 @@ async function getAllPosts(url) {
 
 // Henter alle poster
 getAllPosts(getAllPostsURL);
-
-// ----------------------- Poster ny post
-
-async function postPost(url, data) {
-  console.log("funger pls");
-
-  try {
-    const accessToken = localStorage.getItem("accessToken");
-    //console.log(accessToken);
-    const options = {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${accessToken}`,
-      },
-      body: JSON.stringify(data),
-    };
-    console.log(url, data, options);
-    // opp i api
-    const response = await fetch(url, options);
-    console.log(response);
-    const answer = await response.json();
-    if (response.status === 200) {
-      console.log("bra");
-      window.location = "../home-feed.html";
-      getAllPosts(getAllPostsURL);
-    }
-    console.log(answer);
-  } catch (error) {
-    console.warn(error);
-  }
-}
-
-// Poster posten når man klikker på knappen
-submitPost.addEventListener("click", () => {
-  const postData = {
-    title: postTitle.value.trim(),
-    body: postContent.value.trim(),
-    media: postMedia.value.trim(),
-  };
-  postPost(postPostURL, postData);
-});
-
-// ---------------- Sletter posten
-
-const deleteBtn = document.getElementById("delete-button");
-
-async function deletePost(id) {
-  console.log(id);
-  const url = `${postPostURL}${id}`;
-  try {
-    const accessToken = localStorage.getItem("accessToken");
-    const options = {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${accessToken}`,
-      },
-    };
-    console.log(url, options);
-    const response = await fetch(url, options);
-    console.log(response);
-    const answer = await response.json();
-    console.log(answer);
-    if (response.status === 200) window.location = "../home-feed.html";
-  } catch (error) {
-    console.log(error);
-  }
-}
-
-// -------------- søk på poster, navn, innhold osv
-
-const searchBar = document.getElementById("search-bar");
-
-searchBar.addEventListener("keyup", search);
-
-function search() {
-  const filterQuery = searchBar.value.toLowerCase();
-  //console.log(filterQuery);
-
-  const filteredList = postCollection.filter((post) => {
-    //console.log(post.title, post.author, post.body);
-
-    console.log(postCollection.length);
-    const postTitle = post.title.toLowerCase();
-    const postAuthor = post.author.name.toLowerCase();
-    const postBody = post.body.toLowerCase();
-    //console.log(postTitle, postAuthor, postBody);
-    if (postTitle.indexOf(filterQuery) > -1) return true;
-    if (postAuthor.indexOf(filterQuery) > -1) return true;
-    if (postBody.indexOf(filterQuery) > -1) return true;
-    return false;
-  });
-
-  writePosts(filteredList, posts);
-}
-
-// --------------- Last egne poster på profil side + brukernavn
