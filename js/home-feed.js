@@ -64,7 +64,7 @@ const writePosts = () => {
   }
 
   const editBtns = document.querySelectorAll("button.btnUpdate");
-  console.log(editBtns);
+  //console.log(editBtns);
   for (let btnEdit of editBtns) {
     btnEdit.addEventListener("click", () => {
       const editId = btnEdit.getAttribute("data-update");
@@ -85,6 +85,8 @@ const writePosts = () => {
 };
 
 // ----------------- Henter alle poster
+let postCollection = [];
+//console.log(postCollection);
 
 async function getAllPosts(url) {
   try {
@@ -103,6 +105,8 @@ async function getAllPosts(url) {
     for (let post of posts) {
       allPosts.push(post);
     }
+    postCollection = posts;
+    console.log("Colletion:", postCollection);
     writePosts();
   } catch (error) {
     console.warn(error);
@@ -149,7 +153,7 @@ submitPost.addEventListener("click", () => {
   const postData = {
     title: postTitle.value.trim(),
     body: postContent.value.trim(),
-    //media: postMedia.value.trim(),
+    media: postMedia.value.trim(),
   };
   postPost(postPostURL, postData);
 });
@@ -181,13 +185,31 @@ async function deletePost(id) {
   }
 }
 
-// --------------- Edit post
-
-// GET aktuell post, sette verdiene fra disse inn i innerHTML på inputfelt
-// gjøre endringer, PUT tilbake i API når du klikker på publish
-
-// -------------- filtrer poster
-
 // -------------- søk på poster, navn, innhold osv
+
+const searchBar = document.getElementById("search-bar");
+
+searchBar.addEventListener("keyup", search);
+
+function search() {
+  const filterQuery = searchBar.value.toLowerCase();
+  //console.log(filterQuery);
+
+  const filteredList = postCollection.filter((post) => {
+    //console.log(post.title, post.author, post.body);
+
+    console.log(postCollection.length);
+    const postTitle = post.title.toLowerCase();
+    const postAuthor = post.author.name.toLowerCase();
+    const postBody = post.body.toLowerCase();
+    //console.log(postTitle, postAuthor, postBody);
+    if (postTitle.indexOf(filterQuery) > -1) return true;
+    if (postAuthor.indexOf(filterQuery) > -1) return true;
+    if (postBody.indexOf(filterQuery) > -1) return true;
+    return false;
+  });
+
+  writePosts(filteredList, posts);
+}
 
 // --------------- Last egne poster på profil side + brukernavn

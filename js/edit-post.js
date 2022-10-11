@@ -45,6 +45,7 @@ const editUsername = document.getElementById("edit-username");
 const createdDate = document.getElementById("created");
 const editTitle = document.getElementById("edit-title");
 const editContent = document.getElementById("edit-content");
+const editMedia = document.getElementById("edit-media");
 const submitChanges = document.getElementById("submit-edit");
 
 function listData(post) {
@@ -53,21 +54,20 @@ function listData(post) {
   createdDate.innerHTML = `${post.created}`;
   editTitle.innerHTML = `${post.title}`;
   editContent.innerHTML = `${post.body}`;
+  editMedia.innerHTML = `${post.media}`;
 }
-
-const data = {
-  title: editTitle.value,
-  body: editContent.value,
-};
-
-console.log(data);
 
 // Funksjon som endrer posten, blir kalt leneger oppe
 
-const putUrl = `${postUrl}`;
-
-async function updatePost(url, data) {
+async function updatePost(id) {
+  const data = {
+    title: editTitle.value,
+    body: editContent.value,
+    media: editMedia.value,
+  };
+  console.log(data);
   console.log(id);
+  const putUrl = `${postUrl}`;
   try {
     const accessToken = localStorage.getItem("accessToken");
     const options = {
@@ -78,8 +78,8 @@ async function updatePost(url, data) {
       },
       body: JSON.stringify(data),
     };
-    console.log(url, options);
-    const response = await fetch(url, options);
+    console.log(putUrl, options);
+    const response = await fetch(putUrl, options);
     console.log(response);
     const answer = await response.json();
     console.log(answer);
@@ -91,5 +91,5 @@ async function updatePost(url, data) {
 
 submitChanges.addEventListener("click", () => {
   console.log("heihei");
-  updatePost(putUrl, data);
+  updatePost(id);
 });

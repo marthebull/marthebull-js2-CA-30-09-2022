@@ -79,6 +79,15 @@ function listData(post) {
       }
     });
   }
+
+  const editBtns = document.querySelectorAll("button.btnUpdate");
+  console.log(editBtns);
+  for (let btnEdit of editBtns) {
+    btnEdit.addEventListener("click", () => {
+      const editId = btnEdit.getAttribute("data-update");
+      window.location = `../edit-post.html?id=${editId}`;
+    });
+  }
 }
 
 // Funksjon som sletter posten, blir klat leneger oppe
