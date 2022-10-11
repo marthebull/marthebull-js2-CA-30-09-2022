@@ -47,6 +47,9 @@ async function postPost(url, data) {
 
 // Poster posten når man klikker på knappen
 const submitPost = document.getElementById("submit-post-profile");
+const postTitle = document.getElementById("post-title-profile");
+const postMedia = document.getElementById("post-media-profile");
+const postContent = document.getElementById("post-content-profile");
 
 submitPost.addEventListener("click", () => {
   const postData = {
