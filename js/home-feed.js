@@ -1,6 +1,6 @@
 // ------------------ Deklarerer variabler
 
-const posts = document.getElementById("posts");
+const outElement = document.getElementById("posts");
 const postContent = document.getElementById("post-content");
 const postTitle = document.getElementById("post-title");
 const postMedia = document.getElementById("post-media");
@@ -13,20 +13,20 @@ const API_BASE_URL = "https://nf-api.onrender.com";
 const getAllPostsURL = `${API_BASE_URL}/api/v1/social/posts?_author=true&_comments=true&_reactions=true`;
 const postPostURL = `${API_BASE_URL}/api/v1/social/posts/`;
 
-const allPosts = [];
-
 // Brukernavn på new post form
 yourUsername.innerHTML = localStorage.getItem("username");
 
 // -------------- Oppsett av enkelt post
 
-const writePosts = () => {
-  posts.innerHTML = "";
-  for (let content of allPosts) {
+const writePosts = (list, outElement) => {
+  outElement.innerHTML = "";
+  let newDivs = "";
+
+  for (let content of list) {
     const deleteBtn = `<button class="btnDelete btn btn-primary ms-3 text-secondary rounded-pill" data-delete="${content.id}">DELETE</button>`;
     const viewBtn = `<button class="btnView btn border-primary ms-3 text-primary rounded-pill" data-view="${content.id}">SEE MORE</button>`;
     const updateBtn = `<button class="btnUpdate btn border-primary ms-3 text-primary  rounded-pill" data-update="${content.id}" type="button" data-bs-toggle="modal" data-bs-target="#editModal">EDIT</button>`;
-    posts.innerHTML += `
+    newDivs += `
             <div class="bg-white rounded-3 p-5 mb-3">
                 <div>
                     <a class="d-flex align-items-center mb-4 text-decoration-none" href="profile.html">
@@ -54,6 +54,9 @@ const writePosts = () => {
             </div>
             `;
   }
+
+  outElement.innerHTML = newDivs;
+
   const viewBtns = document.querySelectorAll("button.btnView");
   //console.log(viewBtns);
   for (let btnView of viewBtns) {
@@ -99,15 +102,14 @@ async function getAllPosts(url) {
       },
     };
     //console.log(url, options);
+
     const response = await fetch(url, options);
+    console.log(response);
     const posts = await response.json();
-    //console.log(posts);
-    for (let post of posts) {
-      allPosts.push(post);
-    }
+    console.log(posts);
     postCollection = posts;
     console.log("Colletion:", postCollection);
-    writePosts();
+    writePosts(posts, outElement);
   } catch (error) {
     console.warn(error);
   }
