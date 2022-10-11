@@ -14,7 +14,8 @@ const getAllPostsURL = `${API_BASE_URL}/api/v1/social/posts?_author=true&_commen
 const postPostURL = `${API_BASE_URL}/api/v1/social/posts/`;
 
 // Brukernavn på new post form
-yourUsername.innerHTML = localStorage.getItem("username");
+const currentUser = localStorage.getItem("username");
+yourUsername.innerHTML = `@ ${currentUser}`;
 
 // -------------- Oppsett av enkelt post
 
@@ -110,11 +111,11 @@ async function getAllPosts(url) {
     //console.log(url, options);
 
     const response = await fetch(url, options);
-    console.log(response);
+    //console.log(response);
     const posts = await response.json();
-    console.log(posts);
+    //console.log(posts);
     postCollection = posts;
-    console.log("Colletion:", postCollection);
+    //console.log("Colletion:", postCollection);
     writePosts(posts, outElement);
   } catch (error) {
     console.warn(error);
@@ -127,8 +128,6 @@ getAllPosts(getAllPostsURL);
 // ----------------------- Poster ny post
 
 async function postPost(url, data) {
-  console.log("funger pls");
-
   try {
     const accessToken = localStorage.getItem("accessToken");
     //console.log(accessToken);
@@ -182,9 +181,8 @@ function validateForm(e) {
     contentMsg.innerHTML = "Content must be at least 1 character long.";
   }
 
-  imageUrlMsg = "";
-  let imageUrlPattern = null;
-  if (!imageUrlPattern.test(submittedEmail)) {
+  imageUrlMsg.innerHTML = "";
+  if (postMedia.value.trim() === "") {
     imageUrlMsg.innerHTML = "Please enter a valid image URL.";
   }
 }
