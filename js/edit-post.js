@@ -50,7 +50,7 @@ const submitChanges = document.getElementById("submit-edit");
 
 function listData(post) {
   console.log(post);
-  editUsername.innerHTML = `${post.author.name}`;
+  editUsername.innerHTML = `@ ${post.author.name}`;
   createdDate.innerHTML = `${post.created}`;
   editTitle.innerHTML = `${post.title}`;
   editContent.innerHTML = `${post.body}`;

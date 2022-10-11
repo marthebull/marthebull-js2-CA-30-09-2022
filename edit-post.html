@@ -27,39 +27,38 @@
 
 <body>
     <header class="bg-primary mb-5 mx-auto border-radius-lg col-12 sticky-top">
-        <div class="navbar p-3 d-flex mx-auto border-radius-lg col-12 col-md-8 rounded-3 navbar-expand-lg">
-            <div class="d-flex justify-content-between">
-                <a class="navbar-brand" href="./home-feed.html">
-                    <h1 class="text-white display-6">YELLO</h1>
+        <nav class="navbar navbar-expand-sm bg-primary navbar-dark col-12 col-md-10 mx-auto">
+            <div class="container-fluid">
+                <a class="navbar-brand d-flex" href="./home-feed.html">
+                    <h1 class="text-white display-6 ps-3">YELLO</h1>
                 </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse"
-                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                    aria-label="Toggle navigation">
+                <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#collapsibleNavbar">
                     <span class="navbar-toggler-icon"></span>
                 </button>
+                <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a href="./home-feed.html" class="text-secondary nav-link">HOME</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="./profile.html" class="text-secondary nav-link">PROFILE</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="./index.html" class="text-secondary nav-link">LOG OUT</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
-            <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a href="./home-feed.html" class="text-secondary nav-link">HJEM</a>
-                    </li>
-                    <li class="nav-item active">
-                        <a href="./profile.html" class="text-secondary nav-link">PROFIL</a>
-                    </li>
-                    <li class="nav-item active">
-                        <a href="./index.html" class="text-secondary nav-link">LOGG UT</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
+        </nav>
     </header>
     <main class="p-3 row col-10 col-md-8 col-lg-6 mx-auto">
         <div class="mx-auto">
-            <h1 class="display-6 mb-4 text-center">EDIT POST</h1>
+            <h1 class="display-6 mb-4 text-center text-primary">EDIT POST</h1>
             <div id="edit-form" class="bg-white rounded-3 p-3 mb-3 text-center">
                 <div>
                     <a class="d-flex align-items-center mb-4 text-decoration-none" href="profile.html">
-                        <img class="rounded-circle" width="50px" src="/images/jake-square.jpg" alt="Jakes profile picture">
+                        <div class="rounded-circle bg-primary p-4 opacity-50" alt=""></div>
                         <p id="edit-username" class="font-weight-bold ps-3 mb-0 text-black"></p>
                     </a>
                 </div>
