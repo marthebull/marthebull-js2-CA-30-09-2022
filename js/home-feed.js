@@ -156,13 +156,48 @@ async function postPost(url, data) {
   }
 }
 
+// -------- Validere Create post formet -------------------------- kanskje fjerne alt dette hvis jeg ikke fåt det til
+const titleMsg = document.getElementById("title-msg");
+const contentMsg = document.getElementById("content-msg");
+const imageUrlMsg = document.getElementById("image-url-msg");
+
+submitPost.addEventListener("click", validateForm);
+
+function validateForm(e) {
+  e.preventDefault();
+
+  let submittedTitle = postTitle.value.trim();
+  console.log(`Title: ${submittedTitle}`);
+
+  titleMsg.innerHTML = "";
+  if (submittedTitle.length < 1) {
+    titleMsg.innerHTML = "Title must be at least 1 character long.";
+  }
+
+  let submittedContent = postContent.value.trim();
+  console.log(`Message: ${submittedContent}`);
+
+  contentMsg.innerHTML = "";
+  if (submittedContent.length < 1) {
+    contentMsg.innerHTML = "Content must be at least 1 character long.";
+  }
+
+  imageUrlMsg = "";
+  let imageUrlPattern = null;
+  if (!imageUrlPattern.test(submittedEmail)) {
+    imageUrlMsg.innerHTML = "Please enter a valid image URL.";
+  }
+}
+// --------------------------------------------------------------------------
+
 // Poster posten når man klikker på knappen
 submitPost.addEventListener("click", () => {
-  const postData = {
+  let postData = {
     title: postTitle.value.trim(),
     body: postContent.value.trim(),
     media: postMedia.value.trim(),
   };
+
   postPost(postPostURL, postData);
 });
 
@@ -187,7 +222,8 @@ async function deletePost(id) {
     console.log(response);
     const answer = await response.json();
     console.log(answer);
-    if (response.status === 200) window.location = "../home-feed.html";
+    if (response.status === 200)
+      window.location = "../home-feed.html.hash#posts";
   } catch (error) {
     console.log(error);
   }

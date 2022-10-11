@@ -41,9 +41,9 @@
             </div>
         </nav>
     </header>
-    <main class="p-3 row col-10 col-md-8 col-lg-6 mx-auto d-flex">
-        <div class="mx-auto pb-5 position-sticky">
-            <div class="d-flex justify-content-between">
+    <main class="container row p-3 col-12 col-md-10 mx-auto">
+        <div class="col-lg-4 col-xl-4">
+            <div class="d-flex">
                 <input id="search-bar" class="rounded-3 border-0 mb-3 p-2 ps-4 col-12" type="search" placeholder="Search...">
             </div>
             <div class="bg-white rounded-3 p-3 mb-3 text-center">
@@ -53,15 +53,18 @@
                         <p id="your-username" class="font-weight-bold ps-3 mb-0 text-black"></p>
                     </a>
                 </div>
+                <p class="text-warning justify-content-start" id="title-msg"></p>
                 <input id="post-title" class="rounded-3 border-0 mb-3 p-2 ps-4 mx-auto col-12 bg-light mb-4" type="text" placeholder="Title">
+                <p class="text-warning justify-content-start" id="content-msg"></p>
                 <textarea id="post-content" class="rounded-3 border-0 mb-3 p-2 ps-4 mx-auto col-12 bg-light pb-5 mb-4" type="text-area" placeholder="Whats on your mind?"></textarea>
+                <p class="text-warning justify-content-start" id="image-url-msg"></p>
                 <input id="post-media" class="rounded-3 border-0 mb-3 p-2 ps-4 mx-auto col-12 bg-light mb-4" type="text"
                     placeholder="Place image URL"> 
                 <button id="submit-post" type="submit" class="btn btn-primary mb-3 col-6 col-lg-8 text-secondary rounded-pill mx-auto">Publish</button>
             </div>
         </div>
-        <div class="mx-auto">
-            <div id="posts" class="rounded-3 mb-3">
+        <div class="mx-auto col-lg-8 col-xl-8">
+            <div id="posts" class="rounded-3 mb-3 ">
             </div>
         </div>
     </main>

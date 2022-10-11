@@ -36,7 +36,7 @@ async function postPost(url, data) {
     const answer = await response.json();
     if (response.status === 200) {
       console.log("bra");
-      window.location = "../home-feed.html";
+      window.location = "../profile.html";
       getAllPosts(getAllPostsURL);
     }
     console.log(answer);
