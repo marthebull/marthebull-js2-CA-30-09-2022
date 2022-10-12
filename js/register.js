@@ -41,8 +41,28 @@ function validateForm(e) {
   let emailPattern = /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/;
   if (!emailPattern.test(submittedEmail)) {
     emailMsg.innerHTML =
-      "Please enter a valid email. Email must contain @stud.noroff.no or @noroff.no";
+      "Email can only contain characters, numbers, dot, hyphen and underscore.";
   }
+
+  if (
+    !(
+      submittedEmail.includes("@noroff.no") ||
+      submittedEmail.includes("@stud.noroff.no")
+    )
+  ) {
+    emailMsg.innerHTML = "Email must include @stud.noroff.no or @noroff.no.";
+  }
+
+  /*if (
+    !submittedEmail.toLowerCase().includes("@noroff.no") == false ||
+    submittedEmail.includes("@stud.noroff.no") == false
+  ) {
+    emailMsg.innerHTML = "Email must contain @stud.noroff.no or @noroff.no";
+  }
+  if (!submittedEmail.includes("@stud.noroff.no")) {
+    return (emailMsg.innerHTML =
+      "Email must contain @stud.noroff.no or @noroff.no");
+  }*/
 
   let submittedPassword = passwordInput.value.trim();
   console.log(`Message: ${submittedPassword}`);
