@@ -52,11 +52,19 @@ const postMedia = document.getElementById("post-media-profile");
 const postContent = document.getElementById("post-content-profile");
 
 submitPost.addEventListener("click", () => {
-  const postData = {
-    title: postTitle.value.trim(),
-    body: postContent.value.trim(),
-    media: postMedia.value.trim(),
+  const title = postTitle.value.trim();
+  const body = postContent.value.trim();
+  let media = postMedia.value.trim();
+  if (media === "")
+    media =
+      "https://lederavisen.no/wp-content/uploads/2021/06/image-placeholder.jpeg";
+
+  let postData = {
+    title: title,
+    body: body,
+    media: media,
   };
+
   postPost(postPostURL, postData);
 });
 
@@ -86,10 +94,11 @@ function validateForm(e) {
     contentMsg.innerHTML = "Hey, thoughts goes in here!";
   }
 
+  /*
   imageUrlMsg.innerHTML = "";
   if (postMedia.value.trim() === "") {
     imageUrlMsg.innerHTML = "Show them with a valid image URL.";
-  }
+  }*/
 }
 
 // ------- Hvor postene skal bli satt inn

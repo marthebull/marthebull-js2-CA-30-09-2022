@@ -14,7 +14,5 @@ Filter og søk er kombinert i søkefelt, det tar hensyn til søker i både navn,
 
 Notes to self:
 
-- validere på profilside
 - alle brukernavn sender til egen profil?
-- loading gifs
 - melding hvis man ikke har noen innlegg

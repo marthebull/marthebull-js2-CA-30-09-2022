@@ -50,7 +50,7 @@ const submitChanges = document.getElementById("submit-edit");
 
 function listData(post) {
   console.log(post);
-  editUsername.innerHTML = `@ ${post.author.name}`;
+  editUsername.innerHTML = `@${post.author.name}`;
   createdDate.innerHTML = `${post.created}`;
   editTitle.innerHTML = `${post.title}`;
   editContent.innerHTML = `${post.body}`;
@@ -60,11 +60,21 @@ function listData(post) {
 // Funksjon som endrer posten, blir kalt leneger oppe
 
 async function updatePost(id) {
-  const data = {
-    title: editTitle.value,
-    body: editContent.value,
-    media: editMedia.value,
+  //
+  const title = editTitle.value.trim();
+  const body = editContent.value.trim();
+  let media = editMedia.value.trim();
+  if (media === "")
+    media =
+      "https://lederavisen.no/wp-content/uploads/2021/06/image-placeholder.jpeg";
+
+  let data = {
+    title: title,
+    body: body,
+    media: media,
   };
+  //
+
   console.log(data);
   console.log(id);
   const putUrl = `${postUrl}`;
