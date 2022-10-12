@@ -55,9 +55,7 @@ submitPost.addEventListener("click", () => {
   const title = postTitle.value.trim();
   const body = postContent.value.trim();
   let media = postMedia.value.trim();
-  if (media === "")
-    media =
-      "https://lederavisen.no/wp-content/uploads/2021/06/image-placeholder.jpeg";
+  if (media === "") media = "https://www.pngkey.com/maxpic/u2w7r5y3a9o0w7t4/";
 
   let postData = {
     title: title,

@@ -26,6 +26,10 @@ function validateForm(e) {
       "Please enter a valid email. Email must contain @stud.noroff.no or @noroff.no";
   }
 
+  if (submittedEmail !== localStorage.getItem("email")) {
+    emailMsg.innerHTML = "User with this email does not exist.";
+  }
+
   let submittedPassword = passwordInput.value.trim();
   console.log(`Message: ${submittedPassword}`);
 
@@ -40,15 +44,7 @@ function validateForm(e) {
 loginBtn.addEventListener("click", validateAndProcess);
 function validateAndProcess(event) {
   event.preventDefault();
-  console.log("du har trykket");
-
-  const email = emailInput.value.trim();
-  const password = passwordInput.value.trim();
-
-  const userToLogin = {
-    email: email,
-    password: password,
-  };
+  //console.log("du har trykket");
 
   const data = {
     email: emailInput.value.trim(),

@@ -59,7 +59,7 @@ registerBtn.addEventListener("click", validateAndProcess);
 
 function validateAndProcess(event) {
   event.preventDefault();
-  console.log("du har trykket");
+  //console.log("du har trykket");
 
   const username = usernameInput.value.trim();
   const email = emailInput.value.trim();
@@ -70,6 +70,8 @@ function validateAndProcess(event) {
     email: email,
     password: password,
   };
+
+  localStorage.setItem("email", email);
 
   const registerUrl = `${API_BASE_URL}/api/v1/social/auth/register`;
 
@@ -91,6 +93,7 @@ async function registerUSer(url, userData) {
     console.log(response);
     const json = await response.json();
     console.log(json);
+
     if (response.status === 201) {
       window.location = "../index.html";
     } else if (json.message === "Profile already exists") {

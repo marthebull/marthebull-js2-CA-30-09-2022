@@ -64,9 +64,7 @@ async function updatePost(id) {
   const title = editTitle.value.trim();
   const body = editContent.value.trim();
   let media = editMedia.value.trim();
-  if (media === "")
-    media =
-      "https://lederavisen.no/wp-content/uploads/2021/06/image-placeholder.jpeg";
+  if (media === "") media = "https://www.pngkey.com/maxpic/u2w7r5y3a9o0w7t4/";
 
   let data = {
     title: title,
