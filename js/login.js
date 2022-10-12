@@ -27,7 +27,7 @@ function validateForm(e) {
   }
 
   if (submittedEmail !== localStorage.getItem("email")) {
-    emailMsg.innerHTML = "User with this email does not exist.";
+    emailMsg.innerHTML = "Please check if email is correct.";
   }
 
   let submittedPassword = passwordInput.value.trim();
