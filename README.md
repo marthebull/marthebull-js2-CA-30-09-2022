@@ -14,5 +14,4 @@ Filter og søk er kombinert i søkefelt, det tar hensyn til søker i både navn,
 
 Notes to self:
 
-- alle brukernavn sender til egen profil?
 - melding hvis man ikke har noen innlegg?

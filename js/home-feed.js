@@ -28,7 +28,7 @@ const writePosts = (list, outElement) => {
     const viewBtn = `<button class="btnView btn border-primary ms-3 text-primary rounded-pill" data-view="${content.id}">See more</button>`;
     const updateBtn = `<button class="btnUpdate btn border-primary ms-3 text-primary  rounded-pill" data-update="${content.id}" type="button" data-bs-toggle="modal" data-bs-target="#editModal">Edit</button>`;
     newDivs += `
-            <div class="bg-white rounded-3 p-5 mb-3">
+            <div class="bg-white rounded-3 p-3 p-lg-5 mb-3">
                 <div>
                     <a class="d-flex align-items-center mb-4 text-decoration-none" href="#">
                     <div class="rounded-circle bg-primary p-4 opacity-50" alt="Jakes profile picture"></div>

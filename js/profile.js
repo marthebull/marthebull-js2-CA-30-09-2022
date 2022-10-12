@@ -174,6 +174,10 @@ const writePosts = (list, postOutput) => {
       }
     });
   }
+  if (list.length == 0) {
+    console.log("ingen poster enda");
+    postOutput.innerHTML = `<p class="ps-3 mb-0 display-6 col-8 mx-auto text-primary">No yellos from you yet :(</p>`;
+  }
 };
 
 const myPostsURL = `${API_BASE_URL}/api/v1/social/profiles/${collectedUsername}?_posts=true`;
