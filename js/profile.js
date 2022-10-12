@@ -187,7 +187,7 @@ const writePosts = (list, postOutput) => {
   }
   if (list.length == 0) {
     console.log("ingen poster enda");
-    postOutput.innerHTML = `<p class="ps-3 mb-0 display-6 col-8 mx-auto text-primary">No yellos from you yet :(</p>`;
+    postOutput.innerHTML = `<p class="ps-3 mb-0 display-6 col-8 mx-auto text-primary text-center p-5">Start yelloing and watch your posts pop up here!</p>`;
   }
 };
 
