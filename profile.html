@@ -55,21 +55,26 @@
                 </div>
                 <h1 id="current-username" class="mb-4"></h1>
             </div>
-            <div class="bg-white rounded-3 p-3 mb-3 text-center">
+            <div class="bg-white rounded-3 p-3 mb-3">
                 <div>
                     <a class="d-flex align-items-center mb-4 text-decoration-none" href="profile.html">
                         <div class="rounded-circle bg-primary p-4 opacity-50" alt=""></div>
                         <p id="current-username-create" class="font-weight-bold ps-3 mb-0 text-black"></p>
                     </a>
                 </div>
+                <p class="text-primary text-left mb-1" id="title-msg-profile"></p>
                 <input id="post-title-profile" class="rounded-3 border-0 mb-3 p-2 ps-4 mx-auto col-12 bg-light mb-4" type="text"
                     placeholder="Title">
+                    <p class="text-primary text-left mb-1" id="content-msg-profile"></p>
                 <textarea id="post-content-profile" class="rounded-3 border-0 mb-3 p-2 ps-4 mx-auto col-12 bg-light pb-5 mb-4"
                     type="text-area" placeholder="Whats on your mind?"></textarea>
+                <p class="text-primary text-left mb-1" id="image-url-msg-profile"></p>
                 <input id="post-media-profile" class="rounded-3 border-0 mb-3 p-2 ps-4 mx-auto col-12 bg-light mb-4" type="text"
                     placeholder="Place image URL">
-                <button id="submit-post-profile" type="submit"
-                    class="btn btn-primary mb-3 col-6 col-lg-8 text-secondary rounded-pill mx-auto">Publish</button>
+                    <div class="d-flex">
+                    <button id="submit-post-profile" type="submit"
+                        class="btn btn-primary mb-3 col-6 col-lg-8 text-secondary rounded-pill mx-auto">Publish</button>
+                    </div>
             </div>
         </div>
         <div id="profile-posts" class="mx-auto col-lg-7 col-xl-8">

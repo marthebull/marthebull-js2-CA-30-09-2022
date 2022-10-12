@@ -60,6 +60,38 @@ submitPost.addEventListener("click", () => {
   postPost(postPostURL, postData);
 });
 
+// -------- Validere Create post formet -------------------------- kanskje fjerne alt dette hvis jeg ikke fåt det til
+const titleMsg = document.getElementById("title-msg-profile");
+const contentMsg = document.getElementById("content-msg-profile");
+const imageUrlMsg = document.getElementById("image-url-msg-profile");
+
+submitPost.addEventListener("click", validateForm);
+
+function validateForm(e) {
+  e.preventDefault();
+
+  let submittedTitle = postTitle.value.trim();
+  console.log(`Title: ${submittedTitle}`);
+
+  titleMsg.innerHTML = "";
+  if (submittedTitle.length < 1) {
+    titleMsg.innerHTML = "A title for your thoughts.";
+  }
+
+  let submittedContent = postContent.value.trim();
+  console.log(`Message: ${submittedContent}`);
+
+  contentMsg.innerHTML = "";
+  if (submittedContent.length < 1) {
+    contentMsg.innerHTML = "Hey, thoughts goes in here!";
+  }
+
+  imageUrlMsg.innerHTML = "";
+  if (postMedia.value.trim() === "") {
+    imageUrlMsg.innerHTML = "Show them with a valid image URL.";
+  }
+}
+
 // ------- Hvor postene skal bli satt inn
 const postOutput = document.getElementById("profile-posts");
 // ------- Looper gjennom skriver ut poster
