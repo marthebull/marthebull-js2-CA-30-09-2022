@@ -91,8 +91,6 @@ function validateAndProcess(event) {
     password: password,
   };
 
-  localStorage.setItem("email", email);
-
   const registerUrl = `${API_BASE_URL}/api/v1/social/auth/register`;
 
   registerUSer(registerUrl, userToRegister);

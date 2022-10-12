@@ -26,10 +26,6 @@ function validateForm(e) {
       "Please enter a valid email. Email must contain @stud.noroff.no or @noroff.no";
   }
 
-  if (submittedEmail !== localStorage.getItem("email")) {
-    emailMsg.innerHTML = "Please check if email is correct.";
-  }
-
   let submittedPassword = passwordInput.value.trim();
   console.log(`Message: ${submittedPassword}`);
 

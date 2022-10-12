@@ -29,10 +29,12 @@ const writePosts = (list, outElement) => {
     const updateBtn = `<button class="btnUpdate btn border-primary ms-3 text-primary  rounded-pill" data-update="${content.id}" type="button" data-bs-toggle="modal" data-bs-target="#editModal">Edit</button>`;
     let date = new Date(content.created);
     let postedDate = date.toLocaleString("default", {
-      day: "numeric",
-      month: "long",
+      weekday: "long",
+      day: "2-digit",
+      month: "numeric",
+      year: "numeric",
       hour: "2-digit",
-      minute: "2-digit",
+      minute: "numeric",
     });
     newDivs += `
             <div class="bg-white rounded-3 p-3 p-lg-5 mb-3">
