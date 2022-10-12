@@ -9,11 +9,12 @@ Github Link:
 Development-branch
 https://github.com/marthebull/marthebull-js2-CA-30-09-2022/tree/js2-develop
 
+Trello:
+https://trello.com/b/VPeuflNm/js2-ca
+
 Filter og søk:
 Filter og søk er kombinert i søkefelt, det tar hensyn til søker i både navn, tittel og body/content.
 
 Notes to self:
 
 - Fjerne consol logger
-
-
