@@ -46,7 +46,7 @@ function listData(post) {
   out.innerHTML += `
             <div class="bg-white rounded-3 p-5 mb-3">
                 <div>
-                    <a class="d-flex align-items-center mb-4 text-decoration-none" href="../profile.html">
+                    <a class="d-flex align-items-center mb-4 text-decoration-none" href="#">
                         <p class=" mb-0 text-black">@ ${post.author.name}</p>
                     </a>
                 </div>
