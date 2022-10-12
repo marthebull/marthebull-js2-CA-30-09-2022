@@ -43,13 +43,24 @@ function listData(post) {
   const deleteBtn = `<button class="btnDelete btn btn-primary ms-3 text-secondary rounded-pill" data-delete="${post.id}">Delete</button>`;
   const feedBtn = `<a href="../home-feed.html" class="btnView btn border-primary ms-3 text-primary rounded-pill">Back to feed</a>`;
   const updateBtn = `<button class="btnUpdate btn border-primary ms-3 text-primary  rounded-pill" data-update="${post.id}" type="button" data-bs-toggle="modal" data-bs-target="#editModal">Edit</button>`;
+  let date = new Date(post.created);
+  let postedDate = date.toLocaleString("default", {
+    day: "numeric",
+    month: "long",
+    hour: "2-digit",
+    minute: "2-digit",
+  });
   out.innerHTML += `
             <div class="bg-white rounded-3 p-5 mb-3">
                 <div>
                     <a class="d-flex align-items-center mb-4 text-decoration-none" href="#">
-                        <p class=" mb-0 text-black">@ ${post.author.name}</p>
+                    <div class="rounded-circle bg-primary p-4 opacity-50" alt="Jakes profile picture"></div>
+                        <p class="ps-3 mb-0 text-black">@ ${
+                          post.author.name
+                        }</p>
                     </a>
                 </div>
+                <p class="opacity-50 mx-auto">Posted: ${postedDate}</p>
                 <h3>${post.title}</h3>
                 <p class="col-12">${post.body}</p>
                 <img class="rounded-3 mb-3" width="100%" src="${

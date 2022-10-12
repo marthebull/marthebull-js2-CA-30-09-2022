@@ -27,6 +27,13 @@ const writePosts = (list, outElement) => {
     const deleteBtn = `<button class="btnDelete btn btn-primary ms-3 text-secondary rounded-pill" data-delete="${content.id}">Delete</button>`;
     const viewBtn = `<button class="btnView btn border-primary ms-3 text-primary rounded-pill" data-view="${content.id}">See more</button>`;
     const updateBtn = `<button class="btnUpdate btn border-primary ms-3 text-primary  rounded-pill" data-update="${content.id}" type="button" data-bs-toggle="modal" data-bs-target="#editModal">Edit</button>`;
+    let date = new Date(content.created);
+    let postedDate = date.toLocaleString("default", {
+      day: "numeric",
+      month: "long",
+      hour: "2-digit",
+      minute: "2-digit",
+    });
     newDivs += `
             <div class="bg-white rounded-3 p-3 p-lg-5 mb-3">
                 <div>
@@ -37,6 +44,7 @@ const writePosts = (list, outElement) => {
                         }</p>
                     </a>
                 </div>
+                <p class="col-12 overflow-auto opacity-50">${postedDate}</p>
                 <h3>${content.title}</h3>
                 <div>
                     <p class="col-12 overflow-auto">${content.body}</p>
