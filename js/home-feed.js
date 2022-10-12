@@ -181,19 +181,27 @@ function validateForm(e) {
     contentMsg.innerHTML = "Hey, thoughts goes in here!";
   }
 
-  imageUrlMsg.innerHTML = "";
+  /*imageUrlMsg.innerHTML = "";
   if (postMedia.value.trim() === "") {
     imageUrlMsg.innerHTML = "Show them with a valid image URL.";
-  }
+  }*/
 }
 // --------------------------------------------------------------------------
 
 // Poster posten når man klikker på knappen
+
 submitPost.addEventListener("click", () => {
+  const title = postTitle.value.trim();
+  const body = postContent.value.trim();
+  let media = postMedia.value.trim();
+  if (media === "")
+    media =
+      "https://lederavisen.no/wp-content/uploads/2021/06/image-placeholder.jpeg";
+
   let postData = {
-    title: postTitle.value.trim(),
-    body: postContent.value.trim(),
-    media: postMedia.value.trim(),
+    title: title,
+    body: body,
+    media: media,
   };
 
   postPost(postPostURL, postData);
