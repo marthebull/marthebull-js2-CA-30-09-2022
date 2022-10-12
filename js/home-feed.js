@@ -170,8 +170,24 @@ const titleMsg = document.getElementById("title-msg");
 const contentMsg = document.getElementById("content-msg");
 const imageUrlMsg = document.getElementById("image-url-msg");
 
-submitPost.addEventListener("click", validateForm);
+submitPost.addEventListener("click", validateAndProcess);
+function validateAndProcess(event) {
+  event.preventDefault();
+  const title = postTitle.value.trim();
+  const body = postContent.value.trim();
+  let media = postMedia.value.trim();
+  if (media === "") media = "https://www.pngkey.com/maxpic/u2w7r5y3a9o0w7t4/";
 
+  let postData = {
+    title: title,
+    body: body,
+    media: media,
+  };
+
+  postPost(postPostURL, postData);
+}
+
+submitPost.addEventListener("click", validateForm);
 function validateForm(e) {
   e.preventDefault();
 
@@ -199,7 +215,7 @@ function validateForm(e) {
 // --------------------------------------------------------------------------
 
 // Poster posten når man klikker på knappen
-
+/*
 submitPost.addEventListener("click", () => {
   const title = postTitle.value.trim();
   const body = postContent.value.trim();
@@ -213,7 +229,7 @@ submitPost.addEventListener("click", () => {
   };
 
   postPost(postPostURL, postData);
-});
+});*/
 
 // ---------------- Sletter posten
 
