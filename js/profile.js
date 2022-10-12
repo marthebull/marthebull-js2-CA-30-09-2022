@@ -129,7 +129,7 @@ const writePosts = (list, postOutput) => {
                     <p class="ps-3 mb-0 text-black">@ ${content.owner}</p>
                     </a>
                 </div>
-                <p class="opacity-50 mx-auto">Posted: ${postedDate}</p>
+                <p class="opacity-50 mx-auto">${postedDate}</p>
                 <h3>${content.title}</h3>
                 <div>
                     <p class="col-12 overflow-auto">${content.body}</p>
