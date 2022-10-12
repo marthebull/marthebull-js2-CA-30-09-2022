@@ -109,7 +109,7 @@ const writePosts = (list, postOutput) => {
 
   for (let content of list) {
     const deleteBtn = `<button class="btnDelete btn btn-primary ms-3 text-secondary rounded-pill" data-delete="${content.id}">Delete</button>`;
-    const viewBtn = `<button class="btnView btn border-primary ms-3 text-primary rounded-pill" data-view="${content.id}">See more</button>`;
+    const viewBtn = `<button class="btnView btn border-primary text-primary rounded-pill" data-view="${content.id}">See more</button>`;
     const updateBtn = `<button class="btnUpdate btn border-primary ms-3 text-primary  rounded-pill" data-update="${content.id}" type="button" data-bs-toggle="modal" data-bs-target="#editModal">Edit</button>`;
     newDivs += `
             <div class="bg-white rounded-3 p-5 mb-3">
