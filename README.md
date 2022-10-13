@@ -26,3 +26,4 @@ Her fjernet jeg alle feilmeldinger for feil email og passord, da valideringen je
 Notes to self:
 
 - Fjerne consol logger
+- Rydde i koden, lage modules??
