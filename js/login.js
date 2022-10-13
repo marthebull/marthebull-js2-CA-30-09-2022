@@ -15,7 +15,7 @@ loginBtn.addEventListener("click", validateForm);
 function validateForm(e) {
   e.preventDefault();
 
-  let submittedEmail = emailInput.value.trim();
+  let submittedEmail = emailInput.value.trim().toLowerCase();
   console.log(`Email: ${submittedEmail}`);
 
   emailMsg.innerHTML = "";
@@ -43,7 +43,7 @@ function validateAndProcess(event) {
   //console.log("du har trykket");
 
   const data = {
-    email: emailInput.value.trim(),
+    email: emailInput.value.trim().toLowerCase(),
     password: passwordInput.value.trim(),
   };
 
