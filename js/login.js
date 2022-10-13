@@ -67,6 +67,9 @@ async function loginUser(url, data) {
     console.log(response);
     const answer = await response.json();
     console.log(answer);
+    if (answer.message === "Invalid email or password") {
+      emailMsg.innerHTML = "Invalid email or password.";
+    }
 
     localStorage.setItem("username", answer.name);
     localStorage.setItem("accessToken", answer.accessToken);
