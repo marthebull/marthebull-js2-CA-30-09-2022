@@ -121,7 +121,7 @@ const writePosts = (list, postOutput) => {
       minute: "numeric",
     });
     newDivs += `
-            <div class="bg-white rounded-3 p-5 mb-3">
+            <div class="bg-white rounded-3 p-3 p-lg-5 mb-3">
                 <div>
                     <a class="d-flex align-items-center mb-4 text-decoration-none" href="profile.html">
                     <div class="rounded-circle bg-primary p-4 opacity-50">
