@@ -107,6 +107,6 @@ async function registerUSer(url, userData) {
       errorMsg.innerHTML = `Profile already exists. Try to <a href="../index.html">log in</a> instead.`;
     }
   } catch (error) {
-    //console.log(error);
+    console.log(error);
   }
 }
