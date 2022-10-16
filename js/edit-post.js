@@ -8,7 +8,7 @@ const queryString = document.location.search;
 const params = new URLSearchParams(queryString);
 // get the id parameter from the query string
 const id = params.get("id");
-console.log(id);
+//console.log(id);
 
 const editForm = document.getElementById("edit-form");
 
@@ -16,7 +16,7 @@ const API_BASE_URL = "https://nf-api.onrender.com";
 const getPost = `${API_BASE_URL}/api/v1/social/posts/`;
 
 const postUrl = `${getPost}${id}?_author=true`;
-console.log(postUrl);
+//console.log(postUrl);
 
 async function getThisPost(url) {
   try {
@@ -27,15 +27,15 @@ async function getThisPost(url) {
         Authorization: `Bearer ${accessToken}`,
       },
     };
-    console.log(url, options);
+    //console.log(url, options);
 
     const response = await fetch(url, options);
-    console.log(response);
+    //console.log(response);
     const post = await response.json();
-    console.log(post);
+    //console.log(post);
     listData(post);
   } catch (error) {
-    console.warn(error);
+    //console.warn(error);
   }
 }
 // Kaller funksjonen som henter poost
@@ -49,7 +49,7 @@ const editMedia = document.getElementById("edit-media");
 const submitChanges = document.getElementById("submit-edit");
 
 function listData(post) {
-  console.log(post);
+  //console.log(post);
   editUsername.innerHTML = `@${post.author.name}`;
   editTitle.innerHTML = `${post.title}`;
   editContent.innerHTML = `${post.body}`;
@@ -72,8 +72,8 @@ async function updatePost(id) {
   };
   //
 
-  console.log(data);
-  console.log(id);
+  //console.log(data);
+  //console.log(id);
   const putUrl = `${postUrl}`;
   try {
     const accessToken = localStorage.getItem("accessToken");
@@ -85,11 +85,11 @@ async function updatePost(id) {
       },
       body: JSON.stringify(data),
     };
-    console.log(putUrl, options);
+    //console.log(putUrl, options);
     const response = await fetch(putUrl, options);
-    console.log(response);
+    //console.log(response);
     const answer = await response.json();
-    console.log(answer);
+    //console.log(answer);
     if (response.status === 200) window.location = "../home-feed.html";
   } catch (error) {
     console.log(error);
@@ -97,6 +97,5 @@ async function updatePost(id) {
 }
 
 submitChanges.addEventListener("click", () => {
-  console.log("heihei");
   updatePost(id);
 });

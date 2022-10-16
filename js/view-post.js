@@ -4,7 +4,7 @@ const queryString = document.location.search;
 const params = new URLSearchParams(queryString);
 // get the id parameter from the query string
 const id = params.get("id");
-console.log(id);
+//console.log(id);
 
 const out = document.getElementById("post");
 
@@ -12,7 +12,7 @@ const API_BASE_URL = "https://nf-api.onrender.com";
 const getPost = `${API_BASE_URL}/api/v1/social/posts/`;
 
 const postUrl = `${getPost}${id}?_author=true`;
-console.log(postUrl);
+//console.log(postUrl);
 
 async function getThisPost(url) {
   try {
@@ -23,12 +23,12 @@ async function getThisPost(url) {
         Authorization: `Bearer ${accessToken}`,
       },
     };
-    console.log(url, options);
+    //console.log(url, options);
 
     const response = await fetch(url, options);
-    console.log(response);
+    //console.log(response);
     const post = await response.json();
-    console.log(post);
+    //console.log(post);
     listData(post);
   } catch (error) {
     console.warn(error);
@@ -86,7 +86,7 @@ function listData(post) {
   const deleteBtns = document.querySelectorAll("button.btnDelete");
   for (let btnDelete of deleteBtns) {
     btnDelete.addEventListener("click", () => {
-      console.log(btnDelete.getAttribute("data-delete"));
+      //console.log(btnDelete.getAttribute("data-delete"));
       if (confirm("Are you sure you want to delete this post?")) {
         deletePost(btnDelete.getAttribute("data-delete"));
       }
@@ -94,7 +94,7 @@ function listData(post) {
   }
 
   const editBtns = document.querySelectorAll("button.btnUpdate");
-  console.log(editBtns);
+  //console.log(editBtns);
   for (let btnEdit of editBtns) {
     btnEdit.addEventListener("click", () => {
       const editId = btnEdit.getAttribute("data-update");
@@ -105,7 +105,7 @@ function listData(post) {
 
 // Funksjon som sletter posten, blir klat leneger oppe
 async function deletePost(id) {
-  console.log(id);
+  //console.log(id);
   const url = `${postUrl}`;
   try {
     const accessToken = localStorage.getItem("accessToken");
@@ -116,13 +116,13 @@ async function deletePost(id) {
         Authorization: `Bearer ${accessToken}`,
       },
     };
-    console.log(url, options);
+    //console.log(url, options);
     const response = await fetch(url, options);
-    console.log(response);
+    //console.log(response);
     const answer = await response.json();
-    console.log(answer);
+    //console.log(answer);
     if (response.status === 200) window.location = "../home-feed.html";
   } catch (error) {
-    console.log(error);
+    //console.log(error);
   }
 }

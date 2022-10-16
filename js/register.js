@@ -21,7 +21,7 @@ function validateForm(e) {
   e.preventDefault();
 
   let submittedUsername = usernameInput.value.trim();
-  console.log(`Username: ${submittedUsername}`);
+  //console.log(`Username: ${submittedUsername}`);
 
   usernameMsg.innerHTML = "";
   if (submittedUsername.length < 5) {
@@ -34,7 +34,7 @@ function validateForm(e) {
   }
 
   let submittedEmail = emailInput.value.trim();
-  console.log(`Email: ${submittedEmail}`);
+  //console.log(`Email: ${submittedEmail}`);
 
   emailMsg.innerHTML = "";
 
@@ -65,7 +65,7 @@ function validateForm(e) {
   }*/
 
   let submittedPassword = passwordInput.value.trim();
-  console.log(`Message: ${submittedPassword}`);
+  //console.log(`Message: ${submittedPassword}`);
 
   passwordMsg.innerHTML = "";
   if (submittedPassword.length < 8) {
@@ -97,7 +97,7 @@ function validateAndProcess(event) {
 }
 
 async function registerUSer(url, userData) {
-  console.log(url, userData);
+  //console.log(url, userData);
   try {
     // caller api
     const postData = {
@@ -108,9 +108,9 @@ async function registerUSer(url, userData) {
       body: JSON.stringify(userData),
     };
     const response = await fetch(url, postData);
-    console.log(response);
+    //console.log(response);
     const json = await response.json();
-    console.log(json);
+    //console.log(json);
 
     if (response.status === 201) {
       window.location = "../index.html";
@@ -118,12 +118,6 @@ async function registerUSer(url, userData) {
       errorMsg.innerHTML = `Profile already exists. Try to <a href="../index.html">log in</a> instead.`;
     }
   } catch (error) {
-    console.log(error);
+    //console.log(error);
   }
 }
-
-//Vil lage dette inni fetchen:
-// if response.status er lik 201 > bli sendt til log in siden, (redeirect med window.location.href??)
-// else if response.status er lik 400 eller annet, skriv ut feilmelding i errorMsg.innerHTML FIKK DETTE TIL!
-
-// Nytt probelm, valideringen funker ikke NÅ FUNKER VALIDERING OG REGISTRERING

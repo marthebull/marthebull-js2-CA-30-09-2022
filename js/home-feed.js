@@ -96,7 +96,7 @@ const writePosts = (list, outElement) => {
   //console.log(deleteBtns);
   for (let btnDelete of deleteBtns) {
     btnDelete.addEventListener("click", () => {
-      console.log(btnDelete.getAttribute("data-delete"));
+      //console.log(btnDelete.getAttribute("data-delete"));
       if (confirm("Are you sure you want to delete this post?")) {
         deletePost(btnDelete.getAttribute("data-delete"));
       }
@@ -149,17 +149,16 @@ async function postPost(url, data) {
       },
       body: JSON.stringify(data),
     };
-    console.log(url, data, options);
+    //console.log(url, data, options);
     // opp i api
     const response = await fetch(url, options);
-    console.log(response);
+    //console.log(response);
     const answer = await response.json();
     if (response.status === 200) {
-      console.log("bra");
       window.location = "../home-feed.html";
       getAllPosts(getAllPostsURL);
     }
-    console.log(answer);
+    //console.log(answer);
   } catch (error) {
     console.warn(error);
   }
@@ -192,7 +191,7 @@ function validateForm(e) {
   e.preventDefault();
 
   let submittedTitle = postTitle.value.trim();
-  console.log(`Title: ${submittedTitle}`);
+  //console.log(`Title: ${submittedTitle}`);
 
   titleMsg.innerHTML = "";
   if (submittedTitle.length < 1) {
@@ -200,7 +199,7 @@ function validateForm(e) {
   }
 
   let submittedContent = postContent.value.trim();
-  console.log(`Message: ${submittedContent}`);
+  //console.log(`Message: ${submittedContent}`);
 
   contentMsg.innerHTML = "";
   if (submittedContent.length < 1) {
@@ -214,29 +213,12 @@ function validateForm(e) {
 }
 // --------------------------------------------------------------------------
 
-// Poster posten når man klikker på knappen
-/*
-submitPost.addEventListener("click", () => {
-  const title = postTitle.value.trim();
-  const body = postContent.value.trim();
-  let media = postMedia.value.trim();
-  if (media === "") media = "https://www.pngkey.com/maxpic/u2w7r5y3a9o0w7t4/";
-
-  let postData = {
-    title: title,
-    body: body,
-    media: media,
-  };
-
-  postPost(postPostURL, postData);
-});*/
-
 // ---------------- Sletter posten
 
 const deleteBtn = document.getElementById("delete-button");
 
 async function deletePost(id) {
-  console.log(id);
+  //console.log(id);
   const url = `${postPostURL}${id}`;
   try {
     const accessToken = localStorage.getItem("accessToken");
@@ -247,11 +229,11 @@ async function deletePost(id) {
         Authorization: `Bearer ${accessToken}`,
       },
     };
-    console.log(url, options);
+    //console.log(url, options);
     const response = await fetch(url, options);
-    console.log(response);
+    //console.log(response);
     const answer = await response.json();
-    console.log(answer);
+    //console.log(answer);
     if (response.status === 200) window.location = "../home-feed.html";
   } catch (error) {
     console.log(error);
@@ -271,7 +253,7 @@ function search() {
   const filteredList = postCollection.filter((post) => {
     //console.log(post.title, post.author, post.body);
 
-    console.log(postCollection.length);
+    //console.log(postCollection.length);
     const postTitle = post.title.toLowerCase();
     const postAuthor = post.author.name.toLowerCase();
     const postBody = post.body.toLowerCase();

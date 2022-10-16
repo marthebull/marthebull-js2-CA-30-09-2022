@@ -9,15 +9,13 @@ const currentUsernameCreate = document.getElementById(
   "current-username-create"
 );
 const collectedUsername = localStorage.getItem("username");
-console.log(collectedUsername);
+//console.log(collectedUsername);
 currentUsername.innerHTML = `@ ${collectedUsername}`;
 currentUsernameCreate.innerHTML = `@ ${collectedUsername}`;
 
 // ----------------------- Poster ny post
 
 async function postPost(url, data) {
-  console.log("funger pls");
-
   try {
     const accessToken = localStorage.getItem("accessToken");
     //console.log(accessToken);
@@ -29,19 +27,19 @@ async function postPost(url, data) {
       },
       body: JSON.stringify(data),
     };
-    console.log(url, data, options);
+    //console.log(url, data, options);
     // opp i api
     const response = await fetch(url, options);
-    console.log(response);
+    //console.log(response);
     const answer = await response.json();
     if (response.status === 200) {
-      console.log("bra");
+      //console.log("bra");
       window.location = "../profile.html";
       getAllPosts(getAllPostsURL);
     }
-    console.log(answer);
+    //console.log(answer);
   } catch (error) {
-    console.warn(error);
+    //console.warn(error);
   }
 }
 
@@ -77,7 +75,7 @@ function validateForm(e) {
   e.preventDefault();
 
   let submittedTitle = postTitle.value.trim();
-  console.log(`Title: ${submittedTitle}`);
+  //console.log(`Title: ${submittedTitle}`);
 
   titleMsg.innerHTML = "";
   if (submittedTitle.length < 1) {
@@ -85,7 +83,7 @@ function validateForm(e) {
   }
 
   let submittedContent = postContent.value.trim();
-  console.log(`Message: ${submittedContent}`);
+  //console.log(`Message: ${submittedContent}`);
 
   contentMsg.innerHTML = "";
   if (submittedContent.length < 1) {
@@ -179,14 +177,14 @@ const writePosts = (list, postOutput) => {
   //console.log(deleteBtns);
   for (let btnDelete of deleteBtns) {
     btnDelete.addEventListener("click", () => {
-      console.log(btnDelete.getAttribute("data-delete"));
+      //console.log(btnDelete.getAttribute("data-delete"));
       if (confirm("Are you sure you want to delete this post?")) {
         deletePost(btnDelete.getAttribute("data-delete"));
       }
     });
   }
   if (list.length == 0) {
-    console.log("ingen poster enda");
+    //console.log("ingen poster enda");
     postOutput.innerHTML = `<p class="ps-3 mb-0 display-6 col-8 mx-auto text-primary text-center p-5">Start yelloing and watch your posts pop up here!</p>`;
   }
 };
@@ -206,11 +204,11 @@ async function getMyPosts(url) {
     //console.log(url, options);
 
     const response = await fetch(url, options);
-    console.log(response);
+    //console.log(response);
     const profile = await response.json();
-    console.log("Profil:", profile);
-    console.log("navn:", profile.name);
-    console.log("post:", profile.posts);
+    //console.log("Profil:", profile);
+    //console.log("navn:", profile.name);
+    //console.log("post:", profile.posts);
 
     const myOwnPosts = profile.posts;
 
@@ -240,9 +238,9 @@ async function getAllProfiles(url) {
     };
 
     const response = await fetch(url, options);
-    console.log(response);
+    //console.log(response);
     const users = await response.json();
-    console.log(users);
+    //console.log(users);
     writeProfiles(users, profilesOutput);
   } catch (error) {
     console.warn(error);
@@ -273,7 +271,7 @@ const writeProfiles = (list, outElement) => {
 const deleteBtn = document.getElementById("delete-button");
 
 async function deletePost(id) {
-  console.log(id);
+  //console.log(id);
   const url = `${postPostURL}${id}`;
   try {
     const accessToken = localStorage.getItem("accessToken");
@@ -284,13 +282,13 @@ async function deletePost(id) {
         Authorization: `Bearer ${accessToken}`,
       },
     };
-    console.log(url, options);
+    //console.log(url, options);
     const response = await fetch(url, options);
-    console.log(response);
+    //console.log(response);
     const answer = await response.json();
-    console.log(answer);
+    //console.log(answer);
     if (response.status === 200) window.location = "../profile.html";
   } catch (error) {
-    console.log(error);
+    //console.log(error);
   }
 }

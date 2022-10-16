@@ -16,7 +16,7 @@ function validateForm(e) {
   e.preventDefault();
 
   let submittedEmail = emailInput.value.trim().toLowerCase();
-  console.log(`Email: ${submittedEmail}`);
+  //console.log(`Email: ${submittedEmail}`);
 
   emailMsg.innerHTML = "";
 
@@ -27,7 +27,7 @@ function validateForm(e) {
   }
 
   let submittedPassword = passwordInput.value.trim();
-  console.log(`Message: ${submittedPassword}`);
+  //console.log(`Message: ${submittedPassword}`);
 
   passwordMsg.innerHTML = "";
   if (submittedPassword.length < 8) {
@@ -61,12 +61,12 @@ async function loginUser(url, data) {
       },
       body: JSON.stringify(data),
     };
-    console.log(url, data, options);
+    //console.log(url, data, options);
 
     const response = await fetch(url, options);
-    console.log(response);
+    //console.log(response);
     const answer = await response.json();
-    console.log(answer);
+    //console.log(answer);
     if (answer.message === "Invalid email or password") {
       emailMsg.innerHTML = "Invalid email or password.";
     }
