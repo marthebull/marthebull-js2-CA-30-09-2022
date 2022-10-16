@@ -14,6 +14,7 @@ const getPost = `${API_BASE_URL}/api/v1/social/posts/`;
 const postUrl = `${getPost}${id}?_author=true`;
 //console.log(postUrl);
 
+// Henter ut aktuell post
 async function getThisPost(url) {
   try {
     const accessToken = localStorage.getItem("accessToken");
@@ -103,7 +104,7 @@ function listData(post) {
   }
 }
 
-// Funksjon som sletter posten, blir klat leneger oppe
+// Funksjon som sletter posten, blir kalt leneger oppe ved delete-knapp
 async function deletePost(id) {
   //console.log(id);
   const url = `${postUrl}`;

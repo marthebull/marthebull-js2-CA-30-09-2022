@@ -89,18 +89,12 @@ function validateForm(e) {
   if (submittedContent.length < 1) {
     contentMsg.innerHTML = "Hey, thoughts goes in here!";
   }
-
-  /*
-  imageUrlMsg.innerHTML = "";
-  if (postMedia.value.trim() === "") {
-    imageUrlMsg.innerHTML = "Show them with a valid image URL.";
-  }*/
 }
 
 // ------- Hvor postene skal bli satt inn
 const postOutput = document.getElementById("profile-posts");
-// ------- Looper gjennom skriver ut poster
 
+// ------- Looper gjennom skriver ut poster
 const writePosts = (list, postOutput) => {
   postOutput.innerHTML = "";
   let newDivs = "";
@@ -189,6 +183,7 @@ const writePosts = (list, postOutput) => {
   }
 };
 
+// ------------------- Henter bare egne poster
 const myPostsURL = `${API_BASE_URL}/api/v1/social/profiles/${collectedUsername}?_posts=true`;
 
 async function getMyPosts(url) {
@@ -218,7 +213,7 @@ async function getMyPosts(url) {
   }
 }
 
-// Henter alle poster
+// Henter alle egne poster
 getMyPosts(myPostsURL);
 
 // ------------ Viser alle brukere på siden
@@ -247,7 +242,7 @@ async function getAllProfiles(url) {
   }
 }
 
-// Henter alle poster
+// Henter alle profiler som finnes (100 av de hvertfall)
 getAllProfiles(profilesURL);
 
 const writeProfiles = (list, outElement) => {

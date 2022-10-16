@@ -13,7 +13,7 @@ const API_BASE_URL = "https://nf-api.onrender.com";
 const getAllPostsURL = `${API_BASE_URL}/api/v1/social/posts?_author=true&_comments=true&_reactions=true`;
 const postPostURL = `${API_BASE_URL}/api/v1/social/posts/`;
 
-// Brukernavn på new post form
+// Brukernavn på new post-form
 const currentUser = localStorage.getItem("username");
 yourUsername.innerHTML = `@ ${currentUser}`;
 
@@ -164,7 +164,7 @@ async function postPost(url, data) {
   }
 }
 
-// -------- Validere Create post formet -------------------------- kanskje fjerne alt dette hvis jeg ikke fåt det til
+// -------------------- Validere Create post formet
 const titleMsg = document.getElementById("title-msg");
 const contentMsg = document.getElementById("content-msg");
 const imageUrlMsg = document.getElementById("image-url-msg");
@@ -183,13 +183,6 @@ function validateAndProcess(event) {
     media: media,
   };
 
-  postPost(postPostURL, postData);
-}
-
-submitPost.addEventListener("click", validateForm);
-function validateForm(e) {
-  e.preventDefault();
-
   let submittedTitle = postTitle.value.trim();
   //console.log(`Title: ${submittedTitle}`);
 
@@ -206,12 +199,8 @@ function validateForm(e) {
     contentMsg.innerHTML = "Hey, thoughts goes in here!";
   }
 
-  /*imageUrlMsg.innerHTML = "";
-  if (postMedia.value.trim() === "") {
-    imageUrlMsg.innerHTML = "Show them with a valid image URL.";
-  }*/
+  postPost(postPostURL, postData);
 }
-// --------------------------------------------------------------------------
 
 // ---------------- Sletter posten
 
@@ -266,5 +255,3 @@ function search() {
 
   writePosts(filteredList, posts);
 }
-
-// --------------- Last egne poster på profil side + brukernavn

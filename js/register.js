@@ -53,17 +53,6 @@ function validateForm(e) {
     emailMsg.innerHTML = "Email must include @stud.noroff.no or @noroff.no.";
   }
 
-  /*if (
-    !submittedEmail.toLowerCase().includes("@noroff.no") == false ||
-    submittedEmail.includes("@stud.noroff.no") == false
-  ) {
-    emailMsg.innerHTML = "Email must contain @stud.noroff.no or @noroff.no";
-  }
-  if (!submittedEmail.includes("@stud.noroff.no")) {
-    return (emailMsg.innerHTML =
-      "Email must contain @stud.noroff.no or @noroff.no");
-  }*/
-
   let submittedPassword = passwordInput.value.trim();
   //console.log(`Message: ${submittedPassword}`);
 

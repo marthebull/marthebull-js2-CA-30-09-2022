@@ -1,7 +1,3 @@
-// Ny side edit-post.html?id=${id}
-//GET post title, body og img, sette de inn i et form.innerHTML
-//sette på eventlistener på publish changes som PUTer fra inputfeltene (som på create post)
-
 // get the query string
 const queryString = document.location.search;
 // create an object that will allows us to access all the query string parameters
@@ -56,8 +52,7 @@ function listData(post) {
   editMedia.innerHTML = `${post.media}`;
 }
 
-// Funksjon som endrer posten, blir kalt leneger oppe
-
+// Funksjon som endrer posten, kjører når en trykke på update-knapp
 async function updatePost(id) {
   //
   const title = editTitle.value.trim();

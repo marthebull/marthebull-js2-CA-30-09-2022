@@ -80,8 +80,3 @@ async function loginUser(url, data) {
     console.warn(error);
   }
 }
-
-//Her vil jeg:
-// Sjekke om brukernavn og passord finnes i database
-// Hvis response.status er lik 200 > send til homefeed.html (redeirect med window.location.href??)
-// Hvis annen status kode > skriv ut feilmelding i errorMsg
