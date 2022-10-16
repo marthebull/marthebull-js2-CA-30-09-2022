@@ -34,3 +34,4 @@ Forbedringspotensiale:
 - Bli sendt til login siden om man ikke er logget inn, men likevel ender på home-feed siden.
 - Sortere poster til latest first på profil side
 - Validering på create-post formet, slik at man ikke får poste tomme poster (dette funket tidligere, litt usikker på hva som er feilen nå)
+- Legge til kommmentarfelt på poster
