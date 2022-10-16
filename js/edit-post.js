@@ -48,16 +48,6 @@ const editContent = document.getElementById("edit-content");
 const editMedia = document.getElementById("edit-media");
 const submitChanges = document.getElementById("submit-edit");
 
-let date = new Date(post.created);
-let postedDate = date.toLocaleString("default", {
-  weekday: "long",
-  day: "2-digit",
-  month: "numeric",
-  year: "numeric",
-  hour: "2-digit",
-  minute: "numeric",
-});
-
 function listData(post) {
   console.log(post);
   editUsername.innerHTML = `@${post.author.name}`;
