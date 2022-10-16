@@ -23,6 +23,9 @@ Ville ha denne create new post-seksjonen sticky på siden, så selvom man scroll
 Login:
 Hvis skriver feil brukenavn eller passord kommer det en feilmelding om "inavlid email og password", får ikke beskjed om noe mer spesifikt enn det. Gir mer spesifikke feilmeldinger på register-siden.
 
+Annet:
+Har valgt å beholde consol logger midlertidig, bare kommentert dem ut.
+
 Forbedringspotensiale:
 
 - Slette accesstoken når en logger ut
