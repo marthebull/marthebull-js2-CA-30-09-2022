@@ -8,7 +8,7 @@ https://timely-unicorn-ff32cd.netlify.app/
 Github Link:
 Development-branch
 https://github.com/marthebull/marthebull-js2-CA-30-09-2022/tree/js2-develop
-main
+main-branch
 https://enchanting-caramel-0fe287.netlify.app/
 
 Trello:
