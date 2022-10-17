@@ -3,13 +3,14 @@
 CA for JavaScript 2, implementere funksjonalitet på sosialmedie plattfrom
 
 Netlify link:
+dev-branch
 https://timely-unicorn-ff32cd.netlify.app/
+main-branch (denne er tom siden jeg ikke har merget enda)
+https://enchanting-caramel-0fe287.netlify.app/
 
 Github Link:
-Development-branch
+Dev-branch
 https://github.com/marthebull/marthebull-js2-CA-30-09-2022/tree/js2-develop
-main-branch
-https://enchanting-caramel-0fe287.netlify.app/
 
 Trello:
 https://trello.com/b/VPeuflNm/js2-ca
