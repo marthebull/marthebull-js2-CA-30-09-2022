@@ -28,7 +28,7 @@ Hvis skriver feil brukenavn eller passord kommer det en feilmelding om "inavlid 
 Annet:
 Har valgt å beholde consol logger midlertidig, bare kommentert dem ut.
 
-Forbedringspotensiale:
+Forbedringspotensiale/ting jeg vil gjøre senere:
 
 - Slette accesstoken når en logger ut
 - Bli sendt til login siden om man ikke er logget inn, men likevel ender på home-feed siden.
