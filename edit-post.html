@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="All your fellow YELLOS will show up here. Check out someones profile by clicking their username or scroll to see whats new.">
+    <meta name="description"
+        content="All your fellow YELLOS will show up here. Check out someones profile by clicking their username or scroll to see whats new.">
     <title>Feed | YELLO</title>
     <link rel="stylesheet" href="css/style.css">
-    <script src="https://kit.fontawesome.com/2e6e3ac140.js" crossorigin="anonymous"defer></script>
-    <script src="./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js" defer></script>
+    <script src="https://kit.fontawesome.com/2e6e3ac140.js" crossorigin="anonymous"></script>
+    <script defer src="./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
         integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"
         defer></script>
@@ -17,9 +19,12 @@
         defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&family=Oswald:wght@400;600;700&display=swap" rel="stylesheet">
-    <script src="./js/home-feed.js" defer></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&family=Oswald:wght@400;600;700&display=swap"
+        rel="stylesheet">
+    <script src="./js/edit-post.js" defer></script>
 </head>
+
 <body>
     <header class="bg-primary mb-5 mx-auto border-radius-lg col-12 sticky-top">
         <nav class="navbar navbar-expand-sm bg-primary navbar-dark col-12 col-md-10 mx-auto">
@@ -47,38 +52,25 @@
             </div>
         </nav>
     </header>
-    <main class="container row col-12 col-md-10 mx-auto">
-        <div class="col-lg-5 col-xl-4">
-            <div class="d-flex">
-                <input id="search-bar" class="rounded-3 border-0 mb-3 p-2 ps-4 col-12" type="search" placeholder="Search...">
-            </div>
-            <div class="bg-white rounded-3 p-3 mb-3">
+    <main class="p-3 row col-10 col-md-8 col-lg-6 mx-auto">
+        <div class="mx-auto">
+            <h1 class="display-6 mb-4 text-center text-primary">EDIT POST</h1>
+            <div id="edit-form" class="bg-white rounded-3 p-3 mb-3 text-center">
                 <div>
                     <a class="d-flex align-items-center mb-4 text-decoration-none" href="profile.html">
                         <div class="rounded-circle bg-primary p-4 opacity-50" alt=""></div>
-                        <p id="your-username" class="font-weight-bold ps-3 mb-0 text-black"></p>
+                        <p id="edit-username" class="font-weight-bold ps-3 mb-0 text-black"></p>
                     </a>
                 </div>
-                <p class="text-primary text-left mb-1" id="title-msg"></p>
-                <input id="post-title" class="rounded-3 border-0 mb-3 p-2 ps-4 mx-auto col-12 bg-light" type="text" placeholder="Title">
-                <p class="text-primary text-left mb-1" id="content-msg"></p>
-                <textarea id="post-content" class="rounded-3 border-0 mb-2 p-2 ps-4 mx-auto col-12 bg-light pb-5" type="text-area" placeholder="Whats on your mind?"></textarea>
-                <p class="text-primary text-left mb-1" id="image-url-msg"></p>
-                <input id="post-media" class="rounded-3 border-0 p-2 ps-4 mx-auto col-12 bg-light mb-5" type="text"
-                    placeholder="Place image URL"> 
-                    <div class="d-flex">
-                        <button id="submit-post" type="submit"
-                    class="mx-auto btn btn-primary mb-3 col-6 col-lg-8 text-secondary rounded-pill">Publish</button>
-
-                    </div>
-            </div>
-        </div>
-        <div class="mx-auto col-lg-7 col-xl-8">
-            <div id="posts" class="rounded-3 mb-3">
-                <div class="d-flex row text-center pt-5">
-                    <img class="mx-auto col-2 mb-3" src="./images/loading-gif-rocket1.png" alt="">
-                    <p class="mx-auto text-primary">Loading posts...</p>
-                </div>
+                <p id="created"></p>
+                <textarea id="edit-title" class="rounded-3 border-0 p-2 ps-4 mx-auto col-12 bg-light mb-4" type="text"></textarea>
+                <textarea id="edit-content" class="rounded-3 border-0 mb-3 p-2 ps-4 mx-auto col-12 bg-light pb-5 mb-4"
+                    type="text-area"></textarea>
+                <textarea id="edit-media" class="rounded-3 border-0 mb-3 p-2 ps-4 mx-auto col-12 bg-light mb-4" type="text"
+                    placeholder="Place image URL"></textarea>
+                <button id="submit-edit" type="submit"
+                    class="btn btn-primary mb-3 col-12 col-sm-6 text-secondary rounded-pill mx-auto">Publish changes</button>
+                    <a href="../home-feed.html" class="btnView btn border-primary col-12 col-sm-6 mb-4 text-primary rounded-pill">Back to feed</a>
             </div>
         </div>
     </main>
@@ -86,4 +78,5 @@
         <p class="text-primary">YELLO © 2022</p>
     </footer>
 </body>
+
 </html>
