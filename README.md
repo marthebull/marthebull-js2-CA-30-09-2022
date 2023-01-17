@@ -4,10 +4,10 @@
 
 A school project made to practise building with Bootstrap and JS building a social media platform. 
 
-Goal: 
+**Goal:**<br/> 
 To apply knowledge of JavaScript techniques to implement the front-end functionality. Using Bootstrap and SASS to build a responsive site. 
 
-API: 
+**API:**<br/> 
 The API used using for this project can be found under Social EndPoints in the [Noroff API documentation](https://noroff-api-docs.netlify.app/).
 
 Criteria: 
