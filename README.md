@@ -2,7 +2,7 @@
 
 **Visit the live site here [Yello](https://timely-unicorn-ff32cd.netlify.app/)**
 
-A school project made to practice building with Bootstrap and JS building a social media platform. 
+A school project made to practice on using Bootstrap and JS building a social media platform. 
 
 **Goal:**<br/> 
 To apply knowledge of JavaScript techniques to implement the front-end functionality. Using Bootstrap and SASS to build a responsive site. 
