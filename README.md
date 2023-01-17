@@ -1,4 +1,4 @@
-# Social media platform - school project practising using JS and Bootstrap 
+## Social media platform - school project practising using JS and Bootstrap 
 
 **Visit the live site here [Yello](https://timely-unicorn-ff32cd.netlify.app/)**
 
