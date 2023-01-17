@@ -10,7 +10,7 @@ To apply knowledge of JavaScript techniques to implement the front-end functiona
 **API:**<br/> 
 The API used using for this project can be found under Social EndPoints in the [Noroff API documentation](https://noroff-api-docs.netlify.app/).
 
-Criteria: 
+**Criteria: **
 - User with @noroff.no or @stud.noroff.no email can register profile
 - Registered user can login
 - User can view a post content feed
