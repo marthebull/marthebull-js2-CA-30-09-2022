@@ -2,7 +2,13 @@
 
 **Visit the live site here [Yello](https://timely-unicorn-ff32cd.netlify.app/)**
 
-A school project made to practise building with Bootstrap and JS building a social media platform.
+A school project made to practise building with Bootstrap and JS building a social media platform. 
+
+Goal: 
+To apply knowledge of JavaScript techniques to implement the front-end functionality. Using Bootstrap and SASS to build a responsive site. 
+
+API: 
+The API used using for this project can be found under Social EndPoints in the [Noroff API documentation](https://noroff-api-docs.netlify.app/).
 
 Criteria: 
 - User with @noroff.no or @stud.noroff.no email can register profile
